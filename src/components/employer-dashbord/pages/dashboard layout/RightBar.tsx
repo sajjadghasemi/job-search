@@ -53,27 +53,37 @@ const RightBar = () => {
       </Box>
       <Box sx={{ display: 'flex', gap: 3 }}>
         <WalletIcon sx={{ color: 'white' }} />
-        <Typography
-          variant="subtitle1"
-          sx={{ color: 'white', fontFamily: 'shabnam' }}
+        <Link
+          style={{ cursor: 'pointer', textDecoration: 'none' }}
+          to="/employer/subscription"
         >
-          اشتراک
-        </Typography>
+          <Typography
+            variant="subtitle1"
+            sx={{ color: 'white', fontFamily: 'shabnam' }}
+          >
+            اشتراک
+          </Typography>
+        </Link>
       </Box>
       <Box sx={{ display: 'flex', gap: 3 }}>
         <FeedIcon sx={{ color: 'white' }} />
-        <Typography
-          variant="subtitle1"
-          sx={{ color: 'white', fontFamily: 'shabnam' }}
+        <Link
+          style={{ cursor: 'pointer', textDecoration: 'none' }}
+          to="/employer/ads"
         >
-          آگهی ها
-        </Typography>
+          <Typography
+            variant="subtitle1"
+            sx={{ color: 'white', fontFamily: 'shabnam' }}
+          >
+            آگهی ها
+          </Typography>
+        </Link>
       </Box>
       <Box sx={{ display: 'flex', gap: 3 }}>
         <NoteAddIcon sx={{ color: 'white' }} />
         <Link
           style={{ cursor: 'pointer', textDecoration: 'none' }}
-          to="/employer/ads"
+          to="/employer/add-advertisement"
         >
           <Typography
             variant="subtitle1"
