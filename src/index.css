@@ -20,4 +20,5 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     direction: rtl;
+    background-color: #f5f5f5ea;
 }
