@@ -16,7 +16,8 @@ const Header = () => {
       sx={{
         display: 'flex',
         justifyContent: 'space-between',
-        padding: '7.6rem',
+        padding: '2rem',
+        margin:3,
       }}
     >
       <Typography

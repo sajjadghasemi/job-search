@@ -9,7 +9,7 @@ import {
 } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 
-const Add = () => {
+const Ads = () => {
   return (
     <Box
       sx={{
@@ -48,7 +48,7 @@ const Add = () => {
           >
             همه
           </InputLabel>
-          {/* //BUG for SELECT ITEMS */}
+          {/* //BUG for SELECT */}
           <Select>
             <MenuItem value="">
               <em>None</em>
@@ -67,7 +67,6 @@ const Add = () => {
         </FormControl>
       </Box>
       <Box>
-        {/* paiin */}
         <Box
           sx={{
             display: 'flex',
@@ -122,7 +121,6 @@ const Add = () => {
             </Typography>
           </Box>
         </Box>
-        {/* vbiareyeh */}
         <Divider sx={{ paddingBlock: '1rem' }} />
         <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
           {/*  */}
@@ -639,4 +637,4 @@ const Add = () => {
   );
 };
 
-export default Add;
+export default Ads;

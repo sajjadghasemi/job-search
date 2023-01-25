@@ -96,12 +96,17 @@ const RightBar = () => {
       {/*  */}
       <Box sx={{ display: 'flex', gap: 3 }}>
         <PeopleIcon sx={{ color: 'white' }} />
-        <Typography
-          variant="subtitle1"
-          sx={{ color: 'white', fontFamily: 'shabnam' }}
+        <Link
+          style={{ cursor: 'pointer', textDecoration: 'none' }}
+          to="employer/applicants"
         >
-          متقاضیان جدید
-        </Typography>
+          <Typography
+            variant="subtitle1"
+            sx={{ color: 'white', fontFamily: 'shabnam' }}
+          >
+            متقاضیان
+          </Typography>
+        </Link>
       </Box>
       <Box sx={{ display: 'flex', gap: 3 }}>
         <InterpreterModeIcon sx={{ color: 'white' }} />
