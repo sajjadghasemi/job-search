@@ -1,13 +1,10 @@
-import React from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+import Header from "./Header";
 
 const UiLayout = () => {
     return (
         <>
-            <h1>
-                <Link to="/">sss</Link>
-                <Link to="/sign">bbb</Link>
-            </h1>
+            <Header />
             <Outlet />
         </>
     );

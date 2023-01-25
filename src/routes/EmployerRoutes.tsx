@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import { EmployerDashboard } from '../components/employer-dashbord/pages/dashboard layout/EmployerDashboard';
+import { EmployerDashboard } from '../components/employer-dashbord/layouts/EmployerDashboard';
 import CompanyInfo from '../components/employer-dashbord/pages/dashboard page/CompanyInfo';
 import CompanyEdit from '../components/employer-dashbord/pages/dashboard page/CompanyEdit';
 import AddingAd from '../components/employer-dashbord/pages/dashboard page/AddingAd';
