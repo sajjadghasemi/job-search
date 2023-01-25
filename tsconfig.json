@@ -6,6 +6,9 @@
       "dom.iterable",
       "esnext"
     ],
+  // "paths":{
+  //   "@assets/*" :["./public/assets/*"],
+  // },
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,

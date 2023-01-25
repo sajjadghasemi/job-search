@@ -13,7 +13,12 @@ const BootstrapInput = styled(InputBase)(() => ({
     },
 }));
 
-const SignUp = () => {
+interface ChangeForm {
+    login: boolean;
+    setLogin: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const SignUp: React.FC<ChangeForm> = ({ login, setLogin }) => {
     return (
         <Box
             component="form"
@@ -84,6 +89,7 @@ const SignUp = () => {
                         borderBottom: "1px solid #5C147E",
                         cursor: "pointer",
                     }}
+                    onClick={() => setLogin(!login)}
                 >
                      وارد شوید
                 </Typography>

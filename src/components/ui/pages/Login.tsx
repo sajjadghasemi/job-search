@@ -1,3 +1,4 @@
+import { FC } from "react";
 import styled from "@emotion/styled";
 import {
     Box,
@@ -20,7 +21,12 @@ const BootstrapInput = styled(InputBase)(() => ({
     },
 }));
 
-const Login = () => {
+interface ChangeForm {
+    login: boolean;
+    setLogin: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const Login: FC<ChangeForm> = ({ login, setLogin }) => {
     return (
         <Box
             component="form"
@@ -92,6 +98,7 @@ const Login = () => {
                         borderBottom: "1px solid #5C147E",
                         cursor: "pointer",
                     }}
+                    onClick={() => setLogin(!login)}
                 >
                      ثبت نام
                 </Typography>
