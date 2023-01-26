@@ -1,13 +1,13 @@
-import { Outlet } from "react-router-dom";
-import Header from "./Header";
+import { Outlet } from 'react-router-dom';
+import HomeHeader from './HomeHeader';
 
 const UiLayout = () => {
-    return (
-        <>
-            <Header />
-            <Outlet />
-        </>
-    );
+  return (
+    <>
+      <HomeHeader />
+      <Outlet />
+    </>
+  );
 };
 
 export default UiLayout;

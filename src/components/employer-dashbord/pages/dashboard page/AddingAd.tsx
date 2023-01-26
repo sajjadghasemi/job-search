@@ -142,7 +142,7 @@ const AddingAd = () => {
               sx={{
                 fontFamily: 'shabnam',
                 fontSize: '20px',
-                fontWeight: 500,
+                fontWeight:500,
                 paddingBlock: 3,
               }}
             >
