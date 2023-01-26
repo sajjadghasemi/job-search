@@ -5,6 +5,7 @@ import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import BusinessIcon from '@mui/icons-material/Business';
 import DescriptionIcon from '@mui/icons-material/Description';
 import ArticleIcon from '@mui/icons-material/Article';
+import { Link } from 'react-router-dom';
 
 const HomeHeader = () => {
   return (
@@ -15,7 +16,6 @@ const HomeHeader = () => {
         height: '86px',
         display: 'flex',
         justifyContent: 'center',
-    
       }}
     >
       <Box
@@ -35,7 +35,7 @@ const HomeHeader = () => {
         >
           Job
         </Typography>
-        <Box sx={{display:'flex',gap:2}}>
+        <Box sx={{ display: 'flex', gap: 2 }}>
           <Box sx={{ display: 'flex' }}>
             <PersonIcon />
             <Typography sx={{ fontFamily: 'shabnam', fontWeight: 500 }}>
@@ -45,43 +45,41 @@ const HomeHeader = () => {
           <Box sx={{ display: 'flex' }}>
             <PersonIcon />
             <Typography sx={{ fontFamily: 'shabnam', fontWeight: 500 }}>
-            کارجو   
+              کارجو
             </Typography>
           </Box>
         </Box>
-        <Box sx={{display:'flex',justifyContent:"space-between",gap:5}}>
-            <Box sx={{display:'flex',gap:1}}>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', gap: 5 }}>
+          <Box sx={{ display: 'flex', gap: 1 }}>
             <BusinessCenterIcon />
-            <Typography sx={{ fontFamily: 'shabnam', fontWeight: 500 }}>
-            فرصت های شغلی   
-            </Typography>
-            </Box>
-            <Box sx={{display:'flex',gap:1}}>
+            <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>
+              <Typography sx={{ fontFamily: 'shabnam', fontWeight: 500 }}>
+                فرصت های شغلی
+              </Typography>
+            </Link>
+          </Box>
+          <Box sx={{ display: 'flex', gap: 1 }}>
             <BusinessIcon />
-            <Typography sx={{ fontFamily: 'shabnam', fontWeight: 500 }}>
-            معرفی شرکتها   
-            </Typography>
-            </Box>
-            <Box sx={{display:'flex',gap:1}}>
+            <Link to="JobAds" style={{ textDecoration: 'none', color: 'white' }}>
+              <Typography sx={{ fontFamily: 'shabnam', fontWeight: 500 }}>
+                معرفی شرکتها
+              </Typography>
+            </Link>
+          </Box>
+          <Box sx={{ display: 'flex', gap: 1 }}>
             <DescriptionIcon />
             <Typography sx={{ fontFamily: 'shabnam', fontWeight: 500 }}>
-            ساخت رزومه
+              ساخت رزومه
             </Typography>
-            </Box>
-            <Box sx={{display:'flex',gap:1}}>
+          </Box>
+          <Box sx={{ display: 'flex', gap: 1 }}>
             <ArticleIcon />
             <Typography sx={{ fontFamily: 'shabnam', fontWeight: 500 }}>
-            مقاله ها   
+              مقاله ها
             </Typography>
-            </Box>
-
-
-
-
-
-
+          </Box>
         </Box>
-        <Box sx={{ display: 'flex'}}>
+        <Box sx={{ display: 'flex' }}>
           <Typography
             variant="body2"
             sx={{
