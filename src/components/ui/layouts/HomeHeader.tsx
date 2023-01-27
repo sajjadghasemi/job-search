@@ -52,7 +52,7 @@ const HomeHeader = () => {
         <Box sx={{ display: 'flex', justifyContent: 'space-between', gap: 5 }}>
           <Box sx={{ display: 'flex', gap: 1 }}>
             <BusinessCenterIcon />
-            <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>
+            <Link to="JobAds" style={{ textDecoration: 'none', color: 'white' }}>
               <Typography sx={{ fontFamily: 'shabnam', fontWeight: 500 }}>
                 فرصت های شغلی
               </Typography>
@@ -60,11 +60,9 @@ const HomeHeader = () => {
           </Box>
           <Box sx={{ display: 'flex', gap: 1 }}>
             <BusinessIcon />
-            <Link to="JobAds" style={{ textDecoration: 'none', color: 'white' }}>
               <Typography sx={{ fontFamily: 'shabnam', fontWeight: 500 }}>
                 معرفی شرکتها
               </Typography>
-            </Link>
           </Box>
           <Box sx={{ display: 'flex', gap: 1 }}>
             <DescriptionIcon />
