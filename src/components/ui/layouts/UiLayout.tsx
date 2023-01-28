@@ -1,4 +1,5 @@
 import { Outlet } from 'react-router-dom';
+import Footer from './Footer';
 import HomeHeader from './HomeHeader';
 
 const UiLayout = () => {
@@ -6,6 +7,7 @@ const UiLayout = () => {
     <>
       <HomeHeader />
       <Outlet />
+      <Footer />
     </>
   );
 };
