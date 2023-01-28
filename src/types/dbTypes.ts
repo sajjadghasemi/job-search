@@ -16,7 +16,7 @@ interface UserType {
     lastName: string;
     email: string;
     password: string;
-    cv: CvType;
+    cv: CvType | null;
 }
 
 type CvType = [
