@@ -1,7 +1,7 @@
 import React from "react";
 import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import homeImage from "../../../../assets/uiImagres/homeImage.svg";
+import homeImage from "../../../../assets/uiImages/homeImage.svg";
 import { Theme, useTheme } from "@mui/material/styles";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import MenuItem from "@mui/material/MenuItem";

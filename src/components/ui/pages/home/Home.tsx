@@ -1,4 +1,5 @@
 import { Container } from "@mui/system";
+import Articles from "./Articles";
 import BuildCv from "./BuildCv";
 import HomeTopBox from "./HomeTopBox";
 import JobsByCat from "./JobsByCat";
@@ -11,6 +12,7 @@ const Home = () => {
             <JobsByCat />
             <NewestAds />
             <BuildCv />
+            <Articles />
         </Container>
     );
 };
