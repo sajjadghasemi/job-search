@@ -5,11 +5,10 @@ import {
   MenuItem,
   Avatar,
   Button,
-  Divider,
 } from '@mui/material';
 import Select from '@mui/material/Select';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
-import image from '../../../assets/uiImagres/JobAd.svg';
+import image from '../../../assets/uiImages/JobAd.svg';
 const JobAds = () => {
   return (
     <Container>

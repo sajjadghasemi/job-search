@@ -1,4 +1,4 @@
-// import styled from "@emotion/styled";
+import * as React from "react";
 import { styled } from "@mui/material/styles";
 import { Box, Button, InputBase, Typography } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
@@ -8,6 +8,7 @@ import Avatar from "@mui/material/Avatar";
 import LinearProgress, {
     linearProgressClasses,
 } from "@mui/material/LinearProgress";
+import NativeSelect from "@mui/material/NativeSelect";
 
 const BootstrapInput = styled(InputBase)(() => ({
     "& .MuiInputBase-input": {
@@ -15,8 +16,8 @@ const BootstrapInput = styled(InputBase)(() => ({
         position: "relative",
         border: "1px solid #ced4da",
         fontSize: 14,
-        width: "auto",
-        padding: "14px 18px",
+        width: "100%",
+        padding: "12px 16px",
         fontFamily: ["shabnam"].join(","),
     },
 }));
@@ -35,6 +36,11 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
 }));
 
 const Cv = () => {
+    const [age, setAge] = React.useState("");
+    const handleChange = (event: { target: { value: string } }) => {
+        setAge(event.target.value);
+    };
+
     return (
         <Box
             sx={{
@@ -60,46 +66,236 @@ const Cv = () => {
                     sx={{
                         display: "flex",
                         flexDirection: "column",
-                        gap: 2,
+                        gap: 3,
                         marginTop: "2rem",
+                        width: "22rem",
                     }}
                 >
-                    <Badge
-                        sx={{ width: "5rem", height: "5rem" }}
-                        overlap="circular"
-                        anchorOrigin={{
-                            vertical: "bottom",
-                            horizontal: "left",
+                    <Box
+                        sx={{
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "space-between",
                         }}
-                        badgeContent={
-                            <IconButton
-                                color="primary"
-                                aria-label="upload picture"
-                                component="label"
-                            >
-                                <input hidden accept="image/*" type="file" />
-                                <AddCircleIcon
-                                    sx={{
-                                        color: "#664887",
-                                        fontSize: "2.1rem",
-                                    }}
-                                />
-                            </IconButton>
-                        }
                     >
-                        <Avatar
+                        <Typography variant="h5" sx={{ fontFamily: "shabnam" }}>
+                            مشخصات فردی
+                        </Typography>
+                        <Badge
                             sx={{ width: "5rem", height: "5rem" }}
-                            alt="Travis Howard"
-                            src=""
+                            overlap="circular"
+                            anchorOrigin={{
+                                vertical: "bottom",
+                                horizontal: "left",
+                            }}
+                            badgeContent={
+                                <IconButton
+                                    color="primary"
+                                    aria-label="upload picture"
+                                    component="label"
+                                >
+                                    <input
+                                        hidden
+                                        accept="image/*"
+                                        type="file"
+                                    />
+                                    <AddCircleIcon
+                                        sx={{
+                                            color: "#664887",
+                                            fontSize: "2.1rem",
+                                        }}
+                                    />
+                                </IconButton>
+                            }
+                        >
+                            <Avatar
+                                sx={{ width: "5rem", height: "5rem" }}
+                                alt="Travis Howard"
+                                src=""
+                            />
+                        </Badge>
+                    </Box>
+                    <Box
+                        sx={{
+                            display: "flex",
+                            flexDirection: "column",
+                            gap: 2,
+                        }}
+                    >
+                        <BootstrapInput placeholder="نام" type="text" />
+                        <BootstrapInput
+                            placeholder="نام خانوادگی"
+                            type="text"
                         />
-                    </Badge>
-
-                    <BootstrapInput placeholder="نام" type="text" />
-                    <BootstrapInput placeholder="نام خانوادگی" type="text" />
-                    <BootstrapInput placeholder="شهر" type="text" />
-                    <BootstrapInput placeholder="آدرس" type="text" />
-                    <BootstrapInput placeholder="شماره تماس" type="text" />
-                    <BootstrapInput placeholder="ایمیل" type="email" />
+                        <BootstrapInput placeholder="شهر" type="text" />
+                        <BootstrapInput placeholder="آدرس" type="text" />
+                        <BootstrapInput placeholder="شماره تماس" type="text" />
+                        <BootstrapInput placeholder="ایمیل" type="email" />
+                        <Box
+                            sx={{
+                                display: "flex",
+                                gap: 2,
+                                alignItems: "center",
+                                justifyContent: "space-between",
+                                padding: ".4rem",
+                            }}
+                        >
+                            <Typography
+                                variant="subtitle2"
+                                sx={{ fontFamily: "shabnam", color: "gray" }}
+                            >
+                                تاریخ تولد
+                            </Typography>
+                            <NativeSelect
+                                id="demo-customized-select-native"
+                                value={age}
+                                onChange={handleChange}
+                                input={<BootstrapInput />}
+                                sx={{ fontFamily: "shabnam" }}
+                            >
+                                <option aria-label="None" value="" />
+                                <option value={1}>1</option>
+                                <option value={20}>2</option>
+                                <option value={30}>3</option>
+                            </NativeSelect>
+                            <NativeSelect
+                                id="demo-customized-select-native"
+                                value={age}
+                                onChange={handleChange}
+                                input={<BootstrapInput />}
+                                sx={{ fontFamily: "shabnam" }}
+                            >
+                                <option aria-label="None" value="" />
+                                <option value={1}>1</option>
+                                <option value={20}>2</option>
+                                <option value={30}>3</option>
+                            </NativeSelect>
+                            <NativeSelect
+                                id="demo-customized-select-native"
+                                value={age}
+                                onChange={handleChange}
+                                input={<BootstrapInput />}
+                                sx={{ fontFamily: "shabnam" }}
+                            >
+                                <option aria-label="None" value="" />
+                                <option value={1}>1</option>
+                                <option value={20}>2</option>
+                                <option value={30}>3</option>
+                            </NativeSelect>
+                        </Box>
+                    </Box>
+                    <Typography
+                        variant="h5"
+                        sx={{ fontFamily: "shabnam", marginTop: "1.5rem" }}
+                    >
+                        سوابق شغلی
+                    </Typography>
+                    <Box
+                        sx={{
+                            display: "flex",
+                            flexDirection: "column",
+                            gap: 2,
+                        }}
+                    >
+                        <BootstrapInput placeholder="نام شرکت" type="text" />
+                        <BootstrapInput placeholder="عنوان شغلی" type="text" />
+                        <Box
+                            sx={{
+                                display: "flex",
+                                gap: 2,
+                                alignItems: "center",
+                                justifyContent: "space-between",
+                                padding: ".4rem",
+                            }}
+                        >
+                            <Typography
+                                variant="subtitle2"
+                                sx={{ fontFamily: "shabnam", color: "gray" }}
+                            >
+                                تاریخ همکاری
+                            </Typography>
+                            <NativeSelect
+                                id="demo-customized-select-native"
+                                value={age}
+                                onChange={handleChange}
+                                input={<BootstrapInput />}
+                                sx={{ fontFamily: "shabnam" }}
+                            >
+                                <option aria-label="None" value="" />
+                                <option value={1}>1</option>
+                                <option value={20}>2</option>
+                                <option value={30}>3</option>
+                            </NativeSelect>
+                            <Typography
+                                variant="subtitle2"
+                                sx={{ fontFamily: "shabnam", color: "gray" }}
+                            >
+                                تا
+                            </Typography>
+                            <NativeSelect
+                                id="demo-customized-select-native"
+                                value={age}
+                                onChange={handleChange}
+                                input={<BootstrapInput />}
+                                sx={{ fontFamily: "shabnam" }}
+                            >
+                                <option aria-label="None" value="" />
+                                <option value={1}>1</option>
+                                <option value={20}>2</option>
+                                <option value={30}>3</option>
+                            </NativeSelect>
+                        </Box>
+                    </Box>
+                    <Typography
+                        variant="h5"
+                        sx={{ fontFamily: "shabnam", marginTop: "1.5rem" }}
+                    >
+                        سوابق تحصیلی
+                    </Typography>
+                    <Box
+                        sx={{
+                            display: "flex",
+                            flexDirection: "column",
+                            gap: 2,
+                        }}
+                    >
+                        <BootstrapInput placeholder="نام دانشگاه" type="text" />
+                        <BootstrapInput placeholder="رشته تحصیلی" type="text" />
+                        <BootstrapInput placeholder="مقطع تحصیلی" type="text" />
+                    </Box>
+                    <Typography
+                        variant="h5"
+                        sx={{ fontFamily: "shabnam", marginTop: "1.5rem" }}
+                    >
+                        مهارت ها
+                    </Typography>
+                    <Box
+                        sx={{
+                            display: "flex",
+                            flexDirection: "column",
+                            gap: 2,
+                        }}
+                    >
+                        <BootstrapInput
+                            placeholder="افزودن مهارت"
+                            type="text"
+                        />
+                    </Box>
+                    <Typography
+                        variant="h5"
+                        sx={{ fontFamily: "shabnam", marginTop: "1.5rem" }}
+                    >
+                        زبان ها
+                    </Typography>
+                    <Box
+                        sx={{
+                            display: "flex",
+                            flexDirection: "column",
+                            gap: 2,
+                        }}
+                    >
+                        <BootstrapInput placeholder="افزودن زبان" type="text" />
+                    </Box>
                     <Button
                         sx={{
                             fontFamily: "shabnam",
@@ -149,7 +345,7 @@ const Cv = () => {
                                 variant="subtitle2"
                                 sx={{ fontFamily: "shabnam" }}
                             >
-                                ضعیف
+                                حرفه ای
                             </Typography>
                             <Typography
                                 variant="subtitle2"
@@ -161,7 +357,7 @@ const Cv = () => {
                                 variant="subtitle2"
                                 sx={{ fontFamily: "shabnam" }}
                             >
-                                حرفه ای
+                                ضعیف
                             </Typography>
                         </Box>
                         <Box
@@ -205,7 +401,7 @@ const Cv = () => {
                                 }}
                                 type="submit"
                             >
-                                نمایش رزومه
+                                دانلود رزومه
                             </Button>
                         </Box>
                     </Box>

@@ -1,4 +1,4 @@
-import footerImg from '../../../assets/uiImagres/namadEtemad.svg';
+import footerImg from '../../../assets/uiImages/namadEtemad.svg';
 import { Box, Typography } from '@mui/material';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
