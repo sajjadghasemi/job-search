@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import UiLayout from "../components/ui/layouts/UiLayout";
-import Home from "../components/ui/pages/Home";
+import Home from "../components/ui/pages/home/Home";
 import JobAds from "../components/ui/pages/JobAds";
 import Sign from "../components/ui/pages/Sign";
 
