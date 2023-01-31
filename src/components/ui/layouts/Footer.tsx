@@ -28,9 +28,21 @@ function Footer() {
           <span style={{ color: '#664482' }}>JOB</span>
         </Typography>
         <Box sx={{ display: 'flex', justifyContent: 'space-between', gap: 2 }}>
-          <InstagramIcon sx={{ color: '#CDCDCD', fontSize: '2.1rem' }} />
-          <FacebookOutlinedIcon sx={{ color: '#CDCDCD', fontSize: '2rem' }} />
-          <TwitterIcon sx={{ color: '#CDCDCD', fontSize: '2rem' }} />
+          <a href="/#">
+            <InstagramIcon
+              sx={{ color: '#CDCDCD', fontSize: '2.1rem', cursor: 'pointer' }}
+            />
+          </a>
+          <a href="/#">
+            <FacebookOutlinedIcon
+              sx={{ color: '#CDCDCD', fontSize: '2rem', cursor: 'pointer' }}
+            />
+          </a>
+          <a href="/#">
+            <TwitterIcon
+              sx={{ color: '#CDCDCD', fontSize: '2rem', cursor: 'pointer' }}
+            />
+          </a>
         </Box>
       </Box>
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>

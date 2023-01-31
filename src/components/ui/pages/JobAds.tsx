@@ -5,7 +5,6 @@ import {
   MenuItem,
   Avatar,
   Button,
-  Divider,
 } from '@mui/material';
 import Select from '@mui/material/Select';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
@@ -745,14 +744,34 @@ const JobAds = () => {
             width: '612px',
             display: 'flex',
             alignItems: 'center',
-            borderRadius:'10px',
-            justifyContent:'space-between',              
-            p:2,
-            marginRight:'14rem'
+            borderRadius: '10px',
+            justifyContent: 'space-between',
+            p: 2,
+            marginRight: '14rem',
           }}
         >
-            <input style={{backgroundColor:'transparent',outline:'none',border:'none',fontFamily:"shabnam"}} type="text" placeholder="ایمیل خود را وارد کنید" />
-            <Button sx={{color:'#D271B7',fontFamily:'shabnam',borderColor:'#D271B7',':hover':{borderColor:'#664482'},paddingInline:5}} variant="outlined">ثبت</Button>
+          <input
+            style={{
+              backgroundColor: 'transparent',
+              outline: 'none',
+              border: 'none',
+              fontFamily: 'shabnam',
+            }}
+            type="text"
+            placeholder="ایمیل خود را وارد کنید"
+          />
+          <Button
+            sx={{
+              color: '#D271B7',
+              fontFamily: 'shabnam',
+              borderColor: '#D271B7',
+              ':hover': { borderColor: '#664482' },
+              paddingInline: 5,
+            }}
+            variant="outlined"
+          >
+            ثبت
+          </Button>
         </Box>
       </Box>
     </Container>
