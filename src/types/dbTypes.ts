@@ -1,16 +1,16 @@
-export interface DefaultDbType {
-    users: UserType[];
-    employer: EmployerType[];
-    ads: AdsType[];
-    categories: CategoriesTypes;
-    currentUser: [] | null;
-    currentEmployer: [] | null;
-    currentAdmin: [] | null;
-    articles: ArticlesTypes;
-    comments: CommentsType;
-}
+// export interface DefaultDbType {
+//     users: UserType[];
+//     employer: EmployerType[];
+//     ads: AdsType[];
+//     categories: CategoriesTypes;
+//     currentUser: [] | null;
+//     currentEmployer: [] | null;
+//     currentAdmin: [] | null;
+//     articles: ArticlesTypes;
+//     comments: CommentsType;
+// }
 
-interface UserType {
+export interface UserType {
     id: string;
     firstName: string;
     lastName: string;

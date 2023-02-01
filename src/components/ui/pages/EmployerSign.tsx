@@ -1,9 +1,9 @@
 import { useState } from "react";
-import Login from "./Login";
-import SignUp from "./SignUp";
+import EmployerLogin from "./EmployerLogin";
+import EmployerSignUp from "./EmployerSignUp";
 import { Box } from "@mui/material";
 
-const Sign = () => {
+const EmployerSign = () => {
     const [login, setLogin] = useState<boolean>(true);
 
     return (
@@ -34,9 +34,9 @@ const Sign = () => {
                         }}
                     >
                         {login ? (
-                            <Login login={login} setLogin={setLogin} />
+                            <EmployerLogin login={login} setLogin={setLogin} />
                         ) : (
-                            <SignUp login={login} setLogin={setLogin} />
+                            <EmployerSignUp login={login} setLogin={setLogin} />
                         )}
                     </Box>
                     <Box>
@@ -51,4 +51,4 @@ const Sign = () => {
     );
 };
 
-export default Sign;
+export default EmployerSign;
