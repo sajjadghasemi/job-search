@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import {
     Box,
@@ -11,7 +11,7 @@ import {
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { loginReducer } from "../../../store/usersSlice";
 import { useNavigate } from "react-router-dom";
 
@@ -38,8 +38,14 @@ interface ChangeForm {
 }
 
 const Login: FC<ChangeForm> = ({ login, setLogin }) => {
+    const [userCheck, setUserCheck] = useState(false);
+    const [done, setDone] = useState(false);
     const navigate = useNavigate();
     const dispatch = useDispatch();
+
+    const currentUser = useSelector(
+        (state: any) => state.usersSlice.currentUser
+    );
 
     let schema = yup.object().shape({
         email: yup.string().email().required("ایمیل را وارد کنید"),
@@ -52,6 +58,17 @@ const Login: FC<ChangeForm> = ({ login, setLogin }) => {
         formState: { errors },
     } = useForm<LoginInputs>({ resolver: yupResolver(schema) });
 
+    useEffect(() => {
+        if (done) {
+            if (currentUser) {
+                navigate("/");
+                setUserCheck(false);
+            } else {
+                setUserCheck(true);
+            }
+        }
+    }, [currentUser, done]);
+
     const loginHandler: SubmitHandler<LoginInputs> = (data) => {
         dispatch(
             loginReducer({
@@ -59,7 +76,7 @@ const Login: FC<ChangeForm> = ({ login, setLogin }) => {
                 password: data.password,
             })
         );
-        navigate("/");
+        setDone(true);
     };
 
     return (
@@ -114,6 +131,21 @@ const Login: FC<ChangeForm> = ({ login, setLogin }) => {
                     }}
                 >
                     رمزعبور را وارد کنید
+                </Typography>
+            )}
+            {userCheck && (
+                <Typography
+                    sx={{
+                        marginTop: ".5rem",
+                        fontSize: ".8rem",
+                        padding: ".3rem",
+                        color: "red",
+                        fontFamily: "shabnam",
+                        border: "1px solid red",
+                        borderRadius: "10px",
+                    }}
+                >
+                    درست وارد کنید
                 </Typography>
             )}
             <Button
