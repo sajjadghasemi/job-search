@@ -3,7 +3,6 @@ import UiLayout from "../components/ui/layouts/UiLayout";
 import Home from "../components/ui/pages/home/Home";
 import JobAds from "../components/ui/pages/JobAds";
 import Sign from "../components/ui/pages/Sign";
-import EmployerSign from "../components/ui/pages/EmployerSign";
 
 const UiRoutes = () => {
     return (
@@ -11,8 +10,7 @@ const UiRoutes = () => {
             <Route path="/" element={<UiLayout />}>
                 <Route path="" element={<Home />} />
                 <Route path="JobAds" element={<JobAds />} />
-                <Route path="employer-sign" element={<EmployerSign />} />
-                <Route path="user-sign" element={<Sign />} />
+                <Route path="sign" element={<Sign />} />
             </Route>
         </Routes>
     );
