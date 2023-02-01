@@ -11,8 +11,8 @@ function App() {
         (state: any) => state.employersSlice.currentEmployer
     );
 
-    // console.log(users);
-    // console.log(employers);
+    console.log(users);
+    console.log(employers);
 
     return (
         <BrowserRouter>
