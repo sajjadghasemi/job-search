@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import {
     Box,
@@ -11,8 +11,8 @@ import {
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { useDispatch } from "react-redux";
-import { loginReducer } from "../../../store/usersSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { loginReducer } from "../../../store/employersSlice";
 import { useNavigate } from "react-router-dom";
 
 type LoginInputs = {
@@ -37,9 +37,15 @@ interface ChangeForm {
     setLogin: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Login: FC<ChangeForm> = ({ login, setLogin }) => {
+const EmployerLogin: FC<ChangeForm> = ({ login, setLogin }) => {
+    const [userCheck, setUserCheck] = useState(false);
+    const [done, setDone] = useState(false);
     const navigate = useNavigate();
     const dispatch = useDispatch();
+
+    const currentEmployer = useSelector(
+        (state: any) => state.employersSlice.currentEmployer
+    );
 
     let schema = yup.object().shape({
         email: yup.string().email().required("ایمیل را وارد کنید"),
@@ -52,6 +58,17 @@ const Login: FC<ChangeForm> = ({ login, setLogin }) => {
         formState: { errors },
     } = useForm<LoginInputs>({ resolver: yupResolver(schema) });
 
+    useEffect(() => {
+        if (done) {
+            if (!currentEmployer) {
+                setUserCheck(true);
+            } else {
+                setUserCheck(false);
+                navigate("/");
+            }
+        }
+    }, [currentEmployer, done]);
+
     const loginHandler: SubmitHandler<LoginInputs> = (data) => {
         dispatch(
             loginReducer({
@@ -59,7 +76,14 @@ const Login: FC<ChangeForm> = ({ login, setLogin }) => {
                 password: data.password,
             })
         );
-        navigate("/");
+        setDone(true);
+
+        // if (!currentEmployer) {
+        //     setUserCheck(true);
+        // } else {
+        //     setUserCheck(false);
+        //     navigate("/");
+        // }
     };
 
     return (
@@ -114,6 +138,21 @@ const Login: FC<ChangeForm> = ({ login, setLogin }) => {
                     }}
                 >
                     رمزعبور را وارد کنید
+                </Typography>
+            )}
+            {userCheck && (
+                <Typography
+                    sx={{
+                        marginTop: ".5rem",
+                        fontSize: ".8rem",
+                        padding: ".3rem",
+                        color: "red",
+                        fontFamily: "shabnam",
+                        border: "1px solid red",
+                        borderRadius: "10px",
+                    }}
+                >
+                    این نام کاربری وجود ندارد
                 </Typography>
             )}
             <Button
@@ -181,4 +220,4 @@ const Login: FC<ChangeForm> = ({ login, setLogin }) => {
     );
 };
 
-export default Login;
+export default EmployerLogin;

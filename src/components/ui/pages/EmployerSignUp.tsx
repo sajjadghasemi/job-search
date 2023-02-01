@@ -1,21 +1,16 @@
-import { FC } from "react";
+import * as React from "react";
 import styled from "@emotion/styled";
-import {
-    Box,
-    Button,
-    Checkbox,
-    FormControlLabel,
-    InputBase,
-    Typography,
-} from "@mui/material";
+import { Box, Button, InputBase, Typography } from "@mui/material";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useDispatch } from "react-redux";
-import { loginReducer } from "../../../store/usersSlice";
+import { signUpReducer } from "../../../store/employersSlice";
 import { useNavigate } from "react-router-dom";
 
-type LoginInputs = {
+type SignUpInputs = {
+    firstName: string;
+    lastName: string;
     email: string;
     password: string;
 };
@@ -37,11 +32,13 @@ interface ChangeForm {
     setLogin: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Login: FC<ChangeForm> = ({ login, setLogin }) => {
+const EmployerSignUp: React.FC<ChangeForm> = ({ login, setLogin }) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
     let schema = yup.object().shape({
+        firstName: yup.string().required("نام را وارد کنید"),
+        lastName: yup.string().required("نام خانوادگی را وارد کنید"),
         email: yup.string().email().required("ایمیل را وارد کنید"),
         password: yup.string().min(4).max(10).required("رمزعبور را وارد کنید"),
     });
@@ -50,11 +47,13 @@ const Login: FC<ChangeForm> = ({ login, setLogin }) => {
         register,
         handleSubmit,
         formState: { errors },
-    } = useForm<LoginInputs>({ resolver: yupResolver(schema) });
+    } = useForm<SignUpInputs>({ resolver: yupResolver(schema) });
 
-    const loginHandler: SubmitHandler<LoginInputs> = (data) => {
+    const signUp: SubmitHandler<SignUpInputs> = (data) => {
         dispatch(
-            loginReducer({
+            signUpReducer({
+                firstName: data.firstName,
+                lastName: data.lastName,
                 email: data.email,
                 password: data.password,
             })
@@ -74,11 +73,57 @@ const Login: FC<ChangeForm> = ({ login, setLogin }) => {
                 gap: 2,
                 marginTop: "2rem",
             }}
-            onSubmit={handleSubmit(loginHandler)}
+            onSubmit={handleSubmit(signUp)}
         >
+            <div>
+                <BootstrapInput
+                    sx={{ width: "5rem" }}
+                    placeholder="نام"
+                    type="text"
+                    {...register("firstName", { required: true })}
+                />
+                <BootstrapInput
+                    sx={{ width: "7rem", marginRight: ".4rem" }}
+                    placeholder="نام خانوادگی"
+                    type="text"
+                    {...register("lastName", { required: true })}
+                />
+                {errors.firstName?.message && (
+                    <Typography
+                        sx={{
+                            // width: "100%",
+                            marginTop: ".5rem",
+                            fontSize: ".8rem",
+                            padding: ".3rem",
+                            color: "red",
+                            fontFamily: "shabnam",
+                            border: "1px solid red",
+                            borderRadius: "10px",
+                        }}
+                    >
+                        نام را وارد کنید
+                    </Typography>
+                )}
+                {errors.lastName?.message && (
+                    <Typography
+                        sx={{
+                            // width: "100%",
+                            marginTop: ".5rem",
+                            fontSize: ".8rem",
+                            padding: ".3rem",
+                            color: "red",
+                            fontFamily: "shabnam",
+                            border: "1px solid red",
+                            borderRadius: "10px",
+                        }}
+                    >
+                        نام خانوادگی را وارد کنید
+                    </Typography>
+                )}
+            </div>
             <BootstrapInput
                 placeholder="ایمیل"
-                type="text"
+                type="email"
                 {...register("email", { required: true })}
             />
             {errors.email?.message && (
@@ -104,6 +149,7 @@ const Login: FC<ChangeForm> = ({ login, setLogin }) => {
             {errors.password?.message && (
                 <Typography
                     sx={{
+                        // width: "100%",
                         marginTop: ".5rem",
                         fontSize: ".8rem",
                         padding: ".3rem",
@@ -129,21 +175,8 @@ const Login: FC<ChangeForm> = ({ login, setLogin }) => {
                 }}
                 type="submit"
             >
-                ورود
+                عضویت
             </Button>
-            <FormControlLabel
-                label="مرا به خاطر بسپار"
-                control={
-                    <Checkbox
-                        sx={{
-                            color: "gray",
-                            "&.Mui-checked": {
-                                color: "#5C147E",
-                            },
-                        }}
-                    />
-                }
-            />
             <Box
                 sx={{
                     background: "#FFFFFF",
@@ -161,7 +194,7 @@ const Login: FC<ChangeForm> = ({ login, setLogin }) => {
                         display: "inline-block",
                     }}
                 >
-                    کاربر جدید هستید؟
+                    حساب کاربری دارید؟
                 </Typography>
                 <Typography
                     sx={{
@@ -174,11 +207,11 @@ const Login: FC<ChangeForm> = ({ login, setLogin }) => {
                     }}
                     onClick={() => setLogin(!login)}
                 >
-                     ثبت نام
+                     وارد شوید
                 </Typography>
             </Box>
         </Box>
     );
 };
 
-export default Login;
+export default EmployerSignUp;
