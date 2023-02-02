@@ -10,7 +10,7 @@ import Applicants from "../components/employer-dashbord/pages/dashboard page/App
 const EmployerRoutes = () => {
     return (
         <Routes>
-            <Route path="/employer/" element={<EmployerDashboard />}>
+            <Route path="/employer" element={<EmployerDashboard />}>
                 <Route path="company" element={<CompanyInfo />} />
                 <Route path="ads" element={<Ads />} />
                 <Route path="edit" element={<CompanyEdit />} />

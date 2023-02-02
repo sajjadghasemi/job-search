@@ -75,23 +75,24 @@ const initialState: EmployersType = {
     employers: [
         {
             id: "1",
-            firstName: "sajjad",
-            lastName: "sajjad",
+            firstName: "سجاد",
+            lastName: "قاسمی",
             email: "employer@gmail.com",
-            password: "aaaa1111",
+            password: "1111",
             logo: "images/123.png",
             company: [
                 {
-                    name: "Makeen",
+                    name: "شرکت داده پرداز تهران",
                     about: "lorem intir chiza",
                     companyEmail: "company@gmail.com",
-                    activityTitle: "Web Dev",
-                    city: "Tehran",
-                    address: "Tehran, Narmak",
-                    phoneNumber: "09121231212",
-                    estYear: "1399",
+                    activityTitle: "برنامه نویسی",
+                    city: "تهران تهران",
+                    address: "نارمک بزرگراه رسالت",
+                    phoneNumber: "09121234567",
+                    estYear: "1391",
                     membersCount: "100",
-                    describtions: "Lorem ipsum is very good",
+                    describtions:
+                        "زمینه فعالیت توضیحات بیشتر مجموعه بین المللی کیکاووس زمان در دو حوزه تامین منابع انسانی و آموزش فعال می باشد. همکاری با شرکتهای نفت و گاز پتروشیمی، نیرو و ... از سوابق این شرکت می باشد.",
                     imgs: ["images/123.png"],
                     rate: 4,
                     geo: [
