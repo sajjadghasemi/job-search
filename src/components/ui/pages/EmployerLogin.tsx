@@ -77,13 +77,6 @@ const EmployerLogin: FC<ChangeForm> = ({ login, setLogin }) => {
             })
         );
         setDone(true);
-
-        // if (!currentEmployer) {
-        //     setUserCheck(true);
-        // } else {
-        //     setUserCheck(false);
-        //     navigate("/");
-        // }
     };
 
     return (
