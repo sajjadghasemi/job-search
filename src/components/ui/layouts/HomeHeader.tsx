@@ -63,6 +63,16 @@ const HomeHeader = () => {
                     >
                         پنل
                     </Link>
+                ) : currentUser ? (
+                    <Link
+                        style={{
+                            textDecoration: "none",
+                            color: "#FFFFFF",
+                        }}
+                        to="/user"
+                    >
+                        پنل
+                    </Link>
                 ) : (
                     <Box sx={{ display: "flex", gap: 2 }}>
                         <Box sx={{ display: "flex" }}>
