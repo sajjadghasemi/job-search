@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import UiLayout from "../components/ui/layouts/UiLayout";
 import ArticlesPage from "../components/ui/pages/ArticlesPage";
+import Companies from "../components/ui/pages/Companies";
 import EmployerSign from "../components/ui/pages/EmployerSign";
 import Home from "../components/ui/pages/home/Home";
 import JobAds from "../components/ui/pages/JobAds";
@@ -16,7 +17,7 @@ const UiRoutes = () => {
                 <Route path="" element={<Home />} />
                 <Route path="JobAds" element={<JobAds />} />
                 <Route path="JobAds/:id" element={<SingleAds />} />
-                <Route path="companies" element={<h1>HEY</h1>} />
+                <Route path="companies" element={<Companies />} />
                 <Route path="companies/:name" element={<SingleCompany />} />
                 <Route path="user-sign" element={<Sign />} />
                 <Route path="employer-sign" element={<EmployerSign />} />

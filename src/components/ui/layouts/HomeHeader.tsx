@@ -132,11 +132,19 @@ const HomeHeader = () => {
                     </Box>
                     <Box sx={{ display: "flex", gap: 1 }}>
                         <BusinessIcon />
-                        <Typography
-                            sx={{ fontFamily: "shabnam", fontWeight: 500 }}
+                        <Link
+                            style={{
+                                textDecoration: "none",
+                                color: "#FFFFFF",
+                            }}
+                            to="/companies"
                         >
-                            معرفی شرکتها
-                        </Typography>
+                            <Typography
+                                sx={{ fontFamily: "shabnam", fontWeight: 500 }}
+                            >
+                                معرفی شرکتها
+                            </Typography>
+                        </Link>
                     </Box>
                     <Box sx={{ display: "flex", gap: 1 }}>
                         <DescriptionIcon />

@@ -1,7 +1,14 @@
-import React from "react";
+import { Container } from "@mui/material";
+import MailSection from "./MailSection";
+import TopBox from "./TopBox";
 
 const SingleCompany = () => {
-    return <div>SingleCompany</div>;
+    return (
+        <Container>
+            <TopBox />
+            <MailSection />
+        </Container>
+    );
 };
 
 export default SingleCompany;
