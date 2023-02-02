@@ -1,4 +1,4 @@
-import { Box, AppBar, Typography } from "@mui/material";
+import { Box, AppBar, Typography, Avatar } from "@mui/material";
 import PhoneIcon from "@mui/icons-material/Phone";
 import PersonIcon from "@mui/icons-material/Person";
 import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
@@ -6,8 +6,17 @@ import BusinessIcon from "@mui/icons-material/Business";
 import DescriptionIcon from "@mui/icons-material/Description";
 import ArticleIcon from "@mui/icons-material/Article";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const HomeHeader = () => {
+    const currentEmployer = useSelector(
+        (state: any) => state.employersSlice.currentEmployer
+    );
+
+    const currentUser = useSelector(
+        (state: any) => state.usersSlice.currentUser
+    );
+
     return (
         <AppBar
             sx={{
@@ -24,6 +33,7 @@ const HomeHeader = () => {
                     justifyContent: "space-between",
                     padding: "2rem",
                     margin: 3,
+                    alignItems: "center",
                 }}
             >
                 <Typography
@@ -33,42 +43,63 @@ const HomeHeader = () => {
                         fontFamily: "cursive",
                     }}
                 >
-                    Job
+                    <Link
+                        style={{
+                            textDecoration: "none",
+                            color: "#FFFFFF",
+                        }}
+                        to="/"
+                    >
+                        Job
+                    </Link>
                 </Typography>
-                <Box sx={{ display: "flex", gap: 2 }}>
-                    <Box sx={{ display: "flex" }}>
-                        <PersonIcon />
-                        <Typography
-                            sx={{ fontFamily: "shabnam", fontWeight: 500 }}
-                        >
-                            <Link
-                                style={{
-                                    textDecoration: "none",
-                                    color: "#FFFFFF",
-                                }}
-                                to="/employer-sign"
+                {currentEmployer ? (
+                    <Link
+                        style={{
+                            textDecoration: "none",
+                            color: "#FFFFFF",
+                        }}
+                        to="/employer"
+                    >
+                        پنل
+                    </Link>
+                ) : (
+                    <Box sx={{ display: "flex", gap: 2 }}>
+                        <Box sx={{ display: "flex" }}>
+                            <PersonIcon />
+                            <Typography
+                                sx={{ fontFamily: "shabnam", fontWeight: 500 }}
                             >
-                                کارفرما
-                            </Link>
-                        </Typography>
-                    </Box>
-                    <Box sx={{ display: "flex" }}>
-                        <PersonIcon />
-                        <Typography
-                            sx={{ fontFamily: "shabnam", fontWeight: 500 }}
-                        >
-                            <Link
-                                style={{
-                                    textDecoration: "none",
-                                    color: "#FFFFFF",
-                                }}
-                                to="/user-sign"
+                                <Link
+                                    style={{
+                                        textDecoration: "none",
+                                        color: "#FFFFFF",
+                                    }}
+                                    to="/employer-sign"
+                                >
+                                    کارفرما
+                                </Link>
+                            </Typography>
+                        </Box>
+                        <Box sx={{ display: "flex" }}>
+                            <PersonIcon />
+                            <Typography
+                                sx={{ fontFamily: "shabnam", fontWeight: 500 }}
                             >
-                                کارجو
-                            </Link>
-                        </Typography>
+                                <Link
+                                    style={{
+                                        textDecoration: "none",
+                                        color: "#FFFFFF",
+                                    }}
+                                    to="/user-sign"
+                                >
+                                    کارجو
+                                </Link>
+                            </Typography>
+                        </Box>
                     </Box>
-                </Box>
+                )}
+
                 <Box
                     sx={{
                         display: "flex",
@@ -99,19 +130,29 @@ const HomeHeader = () => {
                     </Box>
                     <Box sx={{ display: "flex", gap: 1 }}>
                         <DescriptionIcon />
-                        <Typography
-                            sx={{ fontFamily: "shabnam", fontWeight: 500 }}
+                        <Link
+                            to="/user/cv"
+                            style={{ textDecoration: "none", color: "white" }}
                         >
-                            ساخت رزومه
-                        </Typography>
+                            <Typography
+                                sx={{ fontFamily: "shabnam", fontWeight: 500 }}
+                            >
+                                ساخت رزومه
+                            </Typography>
+                        </Link>
                     </Box>
                     <Box sx={{ display: "flex", gap: 1 }}>
                         <ArticleIcon />
-                        <Typography
-                            sx={{ fontFamily: "shabnam", fontWeight: 500 }}
+                        <Link
+                            to="articles"
+                            style={{ textDecoration: "none", color: "white" }}
                         >
-                            مقاله ها
-                        </Typography>
+                            <Typography
+                                sx={{ fontFamily: "shabnam", fontWeight: 500 }}
+                            >
+                                مقاله ها
+                            </Typography>
+                        </Link>
                     </Box>
                 </Box>
                 <Box sx={{ display: "flex" }}>
