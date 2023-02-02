@@ -99,19 +99,29 @@ const HomeHeader = () => {
                     </Box>
                     <Box sx={{ display: "flex", gap: 1 }}>
                         <DescriptionIcon />
-                        <Typography
-                            sx={{ fontFamily: "shabnam", fontWeight: 500 }}
+                        <Link
+                            to="/user/cv"
+                            style={{ textDecoration: "none", color: "white" }}
                         >
-                            ساخت رزومه
-                        </Typography>
+                            <Typography
+                                sx={{ fontFamily: "shabnam", fontWeight: 500 }}
+                            >
+                                ساخت رزومه
+                            </Typography>
+                        </Link>
                     </Box>
                     <Box sx={{ display: "flex", gap: 1 }}>
                         <ArticleIcon />
-                        <Typography
-                            sx={{ fontFamily: "shabnam", fontWeight: 500 }}
+                        <Link
+                            to="articles"
+                            style={{ textDecoration: "none", color: "white" }}
                         >
-                            مقاله ها
-                        </Typography>
+                            <Typography
+                                sx={{ fontFamily: "shabnam", fontWeight: 500 }}
+                            >
+                                مقاله ها
+                            </Typography>
+                        </Link>
                     </Box>
                 </Box>
                 <Box sx={{ display: "flex" }}>
