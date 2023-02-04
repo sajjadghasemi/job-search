@@ -6,12 +6,13 @@ import JobSeekerRoutes from './routes/JobSeekerRoutes';
 import UiRoutes from './routes/UiRoutes';
 
 function App() {
-  const users = useSelector((state: any) => state.usersSlice.currentUser);
-  const employers = useSelector(
+  // const users = useSelector((state: any) => state.usersSlice.users);
+  const employers = useSelector((state: any) => state.employersSlice.employers);
+  const currentEmployer = useSelector(
     (state: any) => state.employersSlice.currentEmployer
   );
 
-  console.log(users);
+  // console.log(currentEmployer);
   console.log(employers);
 
   return (

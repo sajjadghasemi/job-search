@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 const CompanyInfo = () => {
     const employerInfo = useSelector(
-        (state: any) => state.employersSlice.employers
+        (state: any) => state.employersSlice.currentEmployer
     );
 
     console.log(employerInfo);
