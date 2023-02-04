@@ -12,6 +12,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { editReducer } from '../../../../store/employersSlice';
+import { useNavigate } from 'react-router-dom';
 
 type CompanyEditInputTypes = {
   companyName: string;
@@ -40,6 +41,8 @@ const CompanyEdit = () => {
     formState: { errors },
   } = useForm<CompanyEditInputTypes>();
 
+  const navigate = useNavigate();
+
   const onSubmit: SubmitHandler<CompanyEditInputTypes> = data => {
     console.log(data);
     dispatch(
@@ -56,6 +59,7 @@ const CompanyEdit = () => {
         estYear: data.estYear,
       })
     );
+    navigate('/employer/company');
   };
 
   const StyledBorderTextField = styled(TextField)`
