@@ -6,8 +6,6 @@ const CompanyInfo = () => {
     (state: any) => state.employersSlice.currentEmployer
   );
 
-  console.log(employerInfo);
-
   return (
     <Box
       sx={{

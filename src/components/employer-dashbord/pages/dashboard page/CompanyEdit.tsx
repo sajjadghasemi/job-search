@@ -44,7 +44,6 @@ const CompanyEdit = () => {
   const navigate = useNavigate();
 
   const onSubmit: SubmitHandler<CompanyEditInputTypes> = data => {
-    console.log(data);
     dispatch(
       editReducer({
         companyName: data.companyName,

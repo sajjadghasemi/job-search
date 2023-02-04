@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import usersSlice from "./usersSlice";
 import employersSlice from "./employersSlice";
+import adsSlice from "./adsSlice";
 
 export const store = configureStore({
     reducer: {
         usersSlice,
         employersSlice,
+        adsSlice,
     },
 });
 
