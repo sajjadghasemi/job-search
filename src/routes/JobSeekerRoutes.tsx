@@ -4,6 +4,7 @@ import UserLayout from "../components/job-seeker-dashbord/layouts/UserLayout";
 import EditUser from "../components/job-seeker-dashbord/pages/EditUser";
 import Massages from "../components/job-seeker-dashbord/pages/Massages";
 import Cv from "../components/job-seeker-dashbord/pages/Cv";
+import Suggestions from "../components/job-seeker-dashbord/pages/Suggestions";
 
 const JobSeekerRoutes = () => {
     return (
@@ -13,6 +14,7 @@ const JobSeekerRoutes = () => {
                 <Route path="edit" element={<EditUser />} />
                 <Route path="massages" element={<Massages />} />
                 <Route path="cv" element={<Cv />} />
+                <Route path="suggestions" element={<Suggestions />} />
             </Route>
         </Routes>
     );
