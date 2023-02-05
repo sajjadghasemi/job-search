@@ -1,26 +1,20 @@
-import * as React from "react";
-import { styled } from "@mui/material/styles";
-import { Box, Button, InputBase, Typography } from "@mui/material";
-import IconButton from "@mui/material/IconButton";
-import AddCircleIcon from "@mui/icons-material/AddCircle";
-import Badge from "@mui/material/Badge";
-import Avatar from "@mui/material/Avatar";
+import { useSelector } from "react-redux";
+import {
+    Avatar,
+    Box,
+    Button,
+    Divider,
+    InputBase,
+    Typography,
+} from "@mui/material";
 import LinearProgress, {
     linearProgressClasses,
 } from "@mui/material/LinearProgress";
-import NativeSelect from "@mui/material/NativeSelect";
-
-const BootstrapInput = styled(InputBase)(() => ({
-    "& .MuiInputBase-input": {
-        borderRadius: 5,
-        position: "relative",
-        border: "1px solid #ced4da",
-        fontSize: 14,
-        width: "100%",
-        padding: "12px 16px",
-        fontFamily: ["shabnam"].join(","),
-    },
-}));
+import PhoneIphoneIcon from "@mui/icons-material/PhoneIphone";
+import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+import { styled } from "@mui/material/styles";
+import { Link } from "react-router-dom";
 
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
     height: 10,
@@ -36,10 +30,9 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
 }));
 
 const Cv = () => {
-    const [age, setAge] = React.useState("");
-    const handleChange = (event: { target: { value: string } }) => {
-        setAge(event.target.value);
-    };
+    const currentUser = useSelector(
+        (state: any) => state.usersSlice.currentUser
+    );
 
     return (
         <Box
@@ -56,261 +49,289 @@ const Cv = () => {
             <Box
                 sx={{
                     display: "flex",
-                    justifyContent: "space-around",
+                    marginTop: "2rem",
                 }}
             >
                 <Box
-                    component="form"
-                    noValidate
-                    autoComplete="off"
                     sx={{
                         display: "flex",
                         flexDirection: "column",
-                        gap: 3,
-                        marginTop: "2rem",
-                        width: "22rem",
+                        gap: 2,
+                        bgcolor: "#a10087",
+                        padding: "2rem",
+                        alignItems: "center",
+                        justifyContent: "space-evenly",
+                        width: "220px",
                     }}
                 >
+                    <Avatar sx={{ width: "8rem", height: "8rem" }} />
                     <Box
                         sx={{
+                            marginTop: "3rem",
                             display: "flex",
-                            alignItems: "center",
-                            justifyContent: "space-between",
+                            justifyContent: "center",
                         }}
                     >
-                        <Typography variant="h5" sx={{ fontFamily: "shabnam" }}>
-                            مشخصات فردی
+                        <Box sx={{ display: "flex", flexDirection: "column" }}>
+                            <Typography
+                                sx={{
+                                    fontFamily: "shabnam",
+                                    fontWeight: 700,
+                                    color: "#fff",
+                                }}
+                            >
+                                {currentUser.firstName}
+                            </Typography>
+                            <Typography
+                                sx={{
+                                    fontFamily: "shabnam",
+                                    fontWeight: 700,
+                                    color: "#fff",
+                                }}
+                            >
+                                {currentUser.lastName}
+                            </Typography>
+                        </Box>
+                    </Box>
+                    <Box
+                        sx={{
+                            dispaly: "flex",
+                            gap: 2,
+                            flexDirection: "column",
+                        }}
+                    >
+                        <Typography
+                            sx={{
+                                fontFamily: "shabnam",
+                                fontWeight: 700,
+                                color: "#fff",
+                            }}
+                            align="right"
+                        >
+                            تماس با من
                         </Typography>
-                        <Badge
-                            sx={{ width: "5rem", height: "5rem" }}
-                            overlap="circular"
-                            anchorOrigin={{
-                                vertical: "bottom",
-                                horizontal: "left",
+                        <Box
+                            sx={{
+                                display: "flex",
+                                alignItems: "center",
+                                gap: 1,
+                                paddingTop: 1,
+                                color: "#FFF",
                             }}
-                            badgeContent={
-                                <IconButton
-                                    color="primary"
-                                    aria-label="upload picture"
-                                    component="label"
+                        >
+                            <PhoneIphoneIcon sx={{ color: "#fff" }} />
+                            {currentUser.cv
+                                ? currentUser.cv.phoneNumber
+                                : "شماره وارد نشده"}
+                        </Box>
+                        <Box
+                            sx={{
+                                display: "flex",
+                                alignItems: "center",
+                                paddingTop: 1,
+                                color: "#FFF",
+                                gap: 1,
+                            }}
+                        >
+                            <AlternateEmailIcon sx={{ color: "#fff" }} />
+                            {currentUser.email}
+                        </Box>
+                        <Box
+                            sx={{
+                                display: "flex",
+                                alignItems: "center",
+                                paddingTop: 1,
+                                color: "#FFF",
+                                gap: 1,
+                                wordBreak: "break-all",
+                            }}
+                        >
+                            <LocationOnIcon sx={{ color: "#fff" }} />
+                            {currentUser.cv
+                                ? currentUser.cv.address
+                                : "آدرس وارد نشده"}
+                        </Box>
+                    </Box>
+                </Box>
+                <Box
+                    sx={{
+                        width: "30px",
+                        bgcolor: "lightblue",
+                    }}
+                ></Box>
+                <Box
+                    sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: 2,
+                        marginTop: "2rem",
+                    }}
+                >
+                    <Box sx={{ width: "350px", paddingX: "1rem" }}>
+                        <Typography sx={{ fontFamily: "shabnam" }} variant="h5">
+                            تحصیلات
+                        </Typography>
+                        <Divider sx={{ bgcolor: "gray" }} />
+                        <Box
+                            sx={{
+                                display: "flex",
+                                flexDirection: "column",
+                                gap: 1,
+                                padding: "1rem",
+                            }}
+                        >
+                            {currentUser.cv ? (
+                                <>
+                                    <Typography
+                                        sx={{ fontFamily: "shabnam" }}
+                                        variant="subtitle1"
+                                    >
+                                        دانشگاه:{" "}
+                                        {currentUser.cv.educationExp.university}
+                                    </Typography>
+                                    <Typography
+                                        sx={{ fontFamily: "shabnam" }}
+                                        variant="subtitle1"
+                                    >
+                                        رشته:{" "}
+                                        {currentUser.cv.educationExp.major}
+                                    </Typography>
+                                    <Typography
+                                        sx={{ fontFamily: "shabnam" }}
+                                        variant="subtitle1"
+                                    >
+                                        مقطع:{" "}
+                                        {currentUser.cv.educationExp.grade}
+                                    </Typography>
+                                </>
+                            ) : (
+                                <Typography
+                                    sx={{ fontFamily: "shabnam" }}
+                                    variant="subtitle1"
                                 >
-                                    <input
-                                        hidden
-                                        accept="image/*"
-                                        type="file"
-                                    />
-                                    <AddCircleIcon
+                                    اطلاعات تحصیلی وارد نشده
+                                </Typography>
+                            )}
+                        </Box>
+                        <Typography sx={{ fontFamily: "shabnam" }} variant="h5">
+                            سابقه کاری
+                        </Typography>
+                        <Divider sx={{ bgcolor: "gray" }} />
+                        <Box
+                            sx={{
+                                display: "flex",
+                                flexDirection: "column",
+                                gap: 1,
+                                padding: "1rem",
+                            }}
+                        >
+                            {currentUser.cv ? (
+                                <>
+                                    <Typography
+                                        sx={{ fontFamily: "shabnam" }}
+                                        variant="subtitle1"
+                                    >
+                                        نام شرکت:{" "}
+                                        {currentUser.cv.workExp.companyName}
+                                    </Typography>
+                                    <Typography
+                                        sx={{ fontFamily: "shabnam" }}
+                                        variant="subtitle1"
+                                    >
+                                        عنوان شغلی:{" "}
+                                        {currentUser.cv.workExp.title}
+                                    </Typography>
+                                    <Typography
+                                        sx={{ fontFamily: "shabnam" }}
+                                        variant="subtitle1"
+                                    >
+                                        سال ورود:{" "}
+                                        {currentUser.cv.workExp.enterYear} - سال
+                                        خروج: {currentUser.cv.workExp.exitYear}
+                                    </Typography>
+                                </>
+                            ) : (
+                                <Typography
+                                    sx={{ fontFamily: "shabnam" }}
+                                    variant="subtitle1"
+                                >
+                                    اطلاعات کاری وارد نشده
+                                </Typography>
+                            )}
+                        </Box>
+                        <Typography sx={{ fontFamily: "shabnam" }} variant="h6">
+                            مهارت ها
+                        </Typography>
+                        <Divider sx={{ bgcolor: "gray" }} />
+                        <Box
+                            sx={{
+                                display: "flex",
+                                gap: 1,
+                                padding: "1rem",
+                            }}
+                        >
+                            {currentUser.cv ? (
+                                currentUser.cv.skills.map((item: any) => (
+                                    <Typography
                                         sx={{
-                                            color: "#664887",
-                                            fontSize: "2.1rem",
+                                            fontFamily: "shabnam",
+                                            paddingX: "1rem",
+                                            paddingY: ".5rem",
+                                            border: "1px solid purple",
                                         }}
-                                    />
-                                </IconButton>
-                            }
-                        >
-                            <Avatar
-                                sx={{ width: "5rem", height: "5rem" }}
-                                alt="Travis Howard"
-                                src=""
-                            />
-                        </Badge>
-                    </Box>
-                    <Box
-                        sx={{
-                            display: "flex",
-                            flexDirection: "column",
-                            gap: 2,
-                        }}
-                    >
-                        <BootstrapInput placeholder="نام" type="text" />
-                        <BootstrapInput
-                            placeholder="نام خانوادگی"
-                            type="text"
-                        />
-                        <BootstrapInput placeholder="شهر" type="text" />
-                        <BootstrapInput placeholder="آدرس" type="text" />
-                        <BootstrapInput placeholder="شماره تماس" type="text" />
-                        <BootstrapInput placeholder="ایمیل" type="email" />
+                                        variant="subtitle1"
+                                    >
+                                        {item}
+                                    </Typography>
+                                ))
+                            ) : (
+                                <Typography
+                                    sx={{
+                                        fontFamily: "shabnam",
+                                    }}
+                                    variant="subtitle1"
+                                >
+                                    مهارتی ثبت نشده
+                                </Typography>
+                            )}
+                        </Box>
+                        <Typography sx={{ fontFamily: "shabnam" }} variant="h6">
+                            زبان ها
+                        </Typography>
+                        <Divider sx={{ bgcolor: "gray" }} />
                         <Box
                             sx={{
                                 display: "flex",
-                                gap: 2,
-                                alignItems: "center",
-                                justifyContent: "space-between",
-                                padding: ".4rem",
+                                gap: 1,
+                                padding: "1rem",
                             }}
                         >
-                            <Typography
-                                variant="subtitle2"
-                                sx={{ fontFamily: "shabnam", color: "gray" }}
-                            >
-                                تاریخ تولد
-                            </Typography>
-                            <NativeSelect
-                                id="demo-customized-select-native"
-                                value={age}
-                                onChange={handleChange}
-                                input={<BootstrapInput />}
-                                sx={{ fontFamily: "shabnam" }}
-                            >
-                                <option aria-label="None" value="" />
-                                <option value={1}>1</option>
-                                <option value={20}>2</option>
-                                <option value={30}>3</option>
-                            </NativeSelect>
-                            <NativeSelect
-                                id="demo-customized-select-native"
-                                value={age}
-                                onChange={handleChange}
-                                input={<BootstrapInput />}
-                                sx={{ fontFamily: "shabnam" }}
-                            >
-                                <option aria-label="None" value="" />
-                                <option value={1}>1</option>
-                                <option value={20}>2</option>
-                                <option value={30}>3</option>
-                            </NativeSelect>
-                            <NativeSelect
-                                id="demo-customized-select-native"
-                                value={age}
-                                onChange={handleChange}
-                                input={<BootstrapInput />}
-                                sx={{ fontFamily: "shabnam" }}
-                            >
-                                <option aria-label="None" value="" />
-                                <option value={1}>1</option>
-                                <option value={20}>2</option>
-                                <option value={30}>3</option>
-                            </NativeSelect>
+                            {currentUser.cv ? (
+                                currentUser.cv.languages.map((item: any) => (
+                                    <Typography
+                                        sx={{
+                                            fontFamily: "shabnam",
+                                            paddingX: "1rem",
+                                            paddingY: ".5rem",
+                                            border: "1px solid purple",
+                                        }}
+                                        variant="subtitle1"
+                                    >
+                                        {item}
+                                    </Typography>
+                                ))
+                            ) : (
+                                <Typography
+                                    sx={{
+                                        fontFamily: "shabnam",
+                                    }}
+                                    variant="subtitle1"
+                                >
+                                    زبان ثبت نشده
+                                </Typography>
+                            )}
                         </Box>
                     </Box>
-                    <Typography
-                        variant="h5"
-                        sx={{ fontFamily: "shabnam", marginTop: "1.5rem" }}
-                    >
-                        سوابق شغلی
-                    </Typography>
-                    <Box
-                        sx={{
-                            display: "flex",
-                            flexDirection: "column",
-                            gap: 2,
-                        }}
-                    >
-                        <BootstrapInput placeholder="نام شرکت" type="text" />
-                        <BootstrapInput placeholder="عنوان شغلی" type="text" />
-                        <Box
-                            sx={{
-                                display: "flex",
-                                gap: 2,
-                                alignItems: "center",
-                                justifyContent: "space-between",
-                                padding: ".4rem",
-                            }}
-                        >
-                            <Typography
-                                variant="subtitle2"
-                                sx={{ fontFamily: "shabnam", color: "gray" }}
-                            >
-                                تاریخ همکاری
-                            </Typography>
-                            <NativeSelect
-                                id="demo-customized-select-native"
-                                value={age}
-                                onChange={handleChange}
-                                input={<BootstrapInput />}
-                                sx={{ fontFamily: "shabnam" }}
-                            >
-                                <option aria-label="None" value="" />
-                                <option value={1}>1</option>
-                                <option value={20}>2</option>
-                                <option value={30}>3</option>
-                            </NativeSelect>
-                            <Typography
-                                variant="subtitle2"
-                                sx={{ fontFamily: "shabnam", color: "gray" }}
-                            >
-                                تا
-                            </Typography>
-                            <NativeSelect
-                                id="demo-customized-select-native"
-                                value={age}
-                                onChange={handleChange}
-                                input={<BootstrapInput />}
-                                sx={{ fontFamily: "shabnam" }}
-                            >
-                                <option aria-label="None" value="" />
-                                <option value={1}>1</option>
-                                <option value={20}>2</option>
-                                <option value={30}>3</option>
-                            </NativeSelect>
-                        </Box>
-                    </Box>
-                    <Typography
-                        variant="h5"
-                        sx={{ fontFamily: "shabnam", marginTop: "1.5rem" }}
-                    >
-                        سوابق تحصیلی
-                    </Typography>
-                    <Box
-                        sx={{
-                            display: "flex",
-                            flexDirection: "column",
-                            gap: 2,
-                        }}
-                    >
-                        <BootstrapInput placeholder="نام دانشگاه" type="text" />
-                        <BootstrapInput placeholder="رشته تحصیلی" type="text" />
-                        <BootstrapInput placeholder="مقطع تحصیلی" type="text" />
-                    </Box>
-                    <Typography
-                        variant="h5"
-                        sx={{ fontFamily: "shabnam", marginTop: "1.5rem" }}
-                    >
-                        مهارت ها
-                    </Typography>
-                    <Box
-                        sx={{
-                            display: "flex",
-                            flexDirection: "column",
-                            gap: 2,
-                        }}
-                    >
-                        <BootstrapInput
-                            placeholder="افزودن مهارت"
-                            type="text"
-                        />
-                    </Box>
-                    <Typography
-                        variant="h5"
-                        sx={{ fontFamily: "shabnam", marginTop: "1.5rem" }}
-                    >
-                        زبان ها
-                    </Typography>
-                    <Box
-                        sx={{
-                            display: "flex",
-                            flexDirection: "column",
-                            gap: 2,
-                        }}
-                    >
-                        <BootstrapInput placeholder="افزودن زبان" type="text" />
-                    </Box>
-                    <Button
-                        sx={{
-                            fontFamily: "shabnam",
-                            background: "#CAAADD",
-                            color: "#000000",
-                            borderRadius: "5px",
-                            ":hover": {
-                                background: "#5C147E",
-                                color: "#FFFFFF",
-                            },
-                        }}
-                        type="submit"
-                    >
-                        ذخیره
-                    </Button>
                 </Box>
                 <Box
                     sx={{
@@ -323,7 +344,10 @@ const Cv = () => {
                     <Box
                         sx={{
                             flexGrow: 1,
-                            width: "250px",
+                            width: "200px",
+                            marginRight: "1rem",
+                            border: "1px solid gray",
+                            padding: "1rem",
                         }}
                     >
                         <Typography variant="h6" sx={{ fontFamily: "shabnam" }}>
@@ -332,7 +356,20 @@ const Cv = () => {
                         <BorderLinearProgress
                             sx={{ marginTop: "2rem" }}
                             variant="determinate"
-                            value={30}
+                            value={
+                                currentUser &&
+                                currentUser.cv &&
+                                currentUser.cv.workExp &&
+                                currentUser.cv.educationExp
+                                    ? 100
+                                    : currentUser &&
+                                      currentUser.cv &&
+                                      currentUser.cv.workExp
+                                    ? 50
+                                    : currentUser && currentUser.cv
+                                    ? 30
+                                    : 0
+                            }
                         />
                         <Box
                             sx={{
@@ -370,8 +407,7 @@ const Cv = () => {
                             <Button
                                 sx={{
                                     fontFamily: "shabnam",
-                                    background: "#CAAADD",
-                                    color: "#000000",
+                                    background: "purple",
                                     paddingX: "3rem",
                                     borderRadius: "10px",
                                     ":hover": {
@@ -381,7 +417,15 @@ const Cv = () => {
                                 }}
                                 type="submit"
                             >
-                                نمایش رزومه
+                                <Link
+                                    to="/user/add-cv"
+                                    style={{
+                                        textDecoration: "none",
+                                        color: "#FFFFFF",
+                                    }}
+                                >
+                                    ویرایش رزومه
+                                </Link>
                             </Button>
                         </Box>
                         <Box

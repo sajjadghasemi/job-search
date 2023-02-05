@@ -4,6 +4,12 @@ import IconButton from "@mui/material/IconButton";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import Badge from "@mui/material/Badge";
 import Avatar from "@mui/material/Avatar";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { editUserReducer } from "../../../store/usersSlice";
 
 const BootstrapInput = styled(InputBase)(() => ({
     "& .MuiInputBase-input": {
@@ -17,7 +23,40 @@ const BootstrapInput = styled(InputBase)(() => ({
     },
 }));
 
+type CompanyEditInputTypes = {
+    firstName: string;
+    lastName: string;
+    password: string;
+    email: string;
+};
+
 const EditUser = () => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    let schema = yup.object().shape({
+        email: yup.string().email().required("ایمیل را وارد کنید"),
+        password: yup.string().min(4).max(10).required("رمزعبور را وارد کنید"),
+    });
+
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm<CompanyEditInputTypes>();
+
+    const onSubmit: SubmitHandler<CompanyEditInputTypes> = (data) => {
+        dispatch(
+            editUserReducer({
+                firstName: data.firstName,
+                lastName: data.lastName,
+                email: data.email,
+                password: data.password,
+            })
+        );
+        navigate("/user");
+    };
+
     return (
         <Box
             sx={{
@@ -37,7 +76,8 @@ const EditUser = () => {
                 }}
             >
                 <Box
-                    component="form"
+                    component={"form"}
+                    onSubmit={handleSubmit(onSubmit)}
                     noValidate
                     autoComplete="off"
                     sx={{
@@ -61,7 +101,12 @@ const EditUser = () => {
                                 component="label"
                             >
                                 <input hidden accept="image/*" type="file" />
-                                <AddCircleIcon sx={{ color: "#664887", fontSize:"2.1rem" }} />
+                                <AddCircleIcon
+                                    sx={{
+                                        color: "#664887",
+                                        fontSize: "2.1rem",
+                                    }}
+                                />
                             </IconButton>
                         }
                     >
@@ -72,12 +117,26 @@ const EditUser = () => {
                         />
                     </Badge>
 
-                    <BootstrapInput placeholder="نام" type="text" />
-                    <BootstrapInput placeholder="نام خانوادگی" type="text" />
-                    <BootstrapInput placeholder="شهر" type="text" />
-                    <BootstrapInput placeholder="آدرس" type="text" />
-                    <BootstrapInput placeholder="شماره تماس" type="text" />
-                    <BootstrapInput placeholder="ایمیل" type="email" />
+                    <BootstrapInput
+                        placeholder="نام"
+                        type="text"
+                        {...register("firstName", { required: true })}
+                    />
+                    <BootstrapInput
+                        placeholder="نام خانوادگی"
+                        type="text"
+                        {...register("lastName", { required: true })}
+                    />
+                    <BootstrapInput
+                        placeholder="ایمیل"
+                        type="email"
+                        {...register("email", { required: true })}
+                    />
+                    <BootstrapInput
+                        placeholder="رمز عبور"
+                        type="password"
+                        {...register("password", { required: true })}
+                    />
                     <Button
                         sx={{
                             fontFamily: "shabnam",
