@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 import UiLayout from "../components/ui/layouts/UiLayout";
 import ArticlesPage from "../components/ui/pages/ArticlesPage";
 import Companies from "../components/ui/pages/Companies";
@@ -23,6 +23,15 @@ const UiRoutes = () => {
                 <Route path="employer-sign" element={<EmployerSign />} />
                 <Route path="articles" element={<ArticlesPage />} />
                 <Route path="articles/:id" element={<SingleArticle />} />
+                <Route
+                    path="*"
+                    element={
+                        <>
+                            <h1>404</h1>
+                            <Link to="/">Go home</Link>
+                        </>
+                    }
+                />
             </Route>
         </Routes>
     );
