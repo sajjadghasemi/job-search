@@ -1,7 +1,14 @@
 import { Box, Typography, CardMedia } from "@mui/material";
+import { FC } from "react";
 import singleCompanyImage from "../../../../assets/uiImages/singleCompanyImage.png";
 
-const TopBox = () => {
+const TopBox: FC<{
+    about: string;
+    address: string;
+    name: string;
+    activityTitle: string;
+    membersCount: string;
+}> = ({ about, address, name, activityTitle, membersCount }) => {
     return (
         <Box sx={{ padding: "1rem" }}>
             <Box
@@ -36,10 +43,7 @@ const TopBox = () => {
                             sx={{ fontFamily: "shabnam", marginY: "1rem" }}
                             variant="subtitle2"
                         >
-                            علی‌بابا را به سفر می‌شناسند؛ شرکتی بزرگ با 700
-                            همکار که در کنار برندهایی مثل جاباما، دکتر نکست،
-                            سیمرغ، آوایار و...، هلدینگ گروه علی‌بابا را تشکیل
-                            می‌دهد.
+                            {about}
                         </Typography>
                         <Typography sx={{ fontFamily: "shabnam" }} variant="h6">
                             {" "}
@@ -77,7 +81,7 @@ const TopBox = () => {
                             sx={{ fontFamily: "shabnam", marginY: "1rem" }}
                             variant="subtitle2"
                         >
-                            تهران - نارمک - بزرگراه رسالت
+                            {address}{" "}
                         </Typography>
                     </Box>
                     <Box
@@ -96,19 +100,19 @@ const TopBox = () => {
                             sx={{ fontFamily: "shabnam" }}
                             variant="subtitle1"
                         >
-                            فروش بلیت قطار،اتوبوس و رزرو
+                            {name}{" "}
                         </Typography>
                         <Typography
                             sx={{ fontFamily: "shabnam", marginY: "1rem" }}
                             variant="subtitle2"
                         >
-                            500 کارمند
+                            {activityTitle}{" "}
                         </Typography>
                         <Typography
                             sx={{ fontFamily: "shabnam" }}
                             variant="subtitle2"
                         >
-                            10 آگهی
+                            {membersCount} کارمند
                         </Typography>
                     </Box>
                 </Box>

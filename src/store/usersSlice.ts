@@ -123,6 +123,9 @@ const usersSlice = createSlice({
             );
             state.currentUser = userCheck;
         },
+        logoutReducer(state) {
+            state.currentUser = null;
+        },
         editUserReducer(state, action) {
             const readyForEdit = state.users.findIndex(
                 (item) => item.id === state.currentUser?.id
@@ -146,7 +149,12 @@ const usersSlice = createSlice({
     },
 });
 
-export const { signUpReducer, loginReducer, editUserReducer, AddCv } =
-    usersSlice.actions;
+export const {
+    signUpReducer,
+    loginReducer,
+    logoutReducer,
+    editUserReducer,
+    AddCv,
+} = usersSlice.actions;
 
 export default usersSlice.reducer;

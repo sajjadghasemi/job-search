@@ -1,4 +1,4 @@
-import { Box, AppBar, Typography, Avatar } from "@mui/material";
+import { Box, AppBar, Typography } from "@mui/material";
 import PhoneIcon from "@mui/icons-material/Phone";
 import PersonIcon from "@mui/icons-material/Person";
 import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
@@ -6,7 +6,9 @@ import BusinessIcon from "@mui/icons-material/Business";
 import DescriptionIcon from "@mui/icons-material/Description";
 import ArticleIcon from "@mui/icons-material/Article";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { logoutReducer } from "../../../store/usersSlice";
+import { EmployerLogoutReducer } from "../../../store/employersSlice";
 
 const HomeHeader = () => {
     const currentEmployer = useSelector(
@@ -16,6 +18,8 @@ const HomeHeader = () => {
     const currentUser = useSelector(
         (state: any) => state.usersSlice.currentUser
     );
+
+    const dispatch = useDispatch();
 
     return (
         <AppBar
@@ -54,25 +58,53 @@ const HomeHeader = () => {
                     </Link>
                 </Typography>
                 {currentEmployer ? (
-                    <Link
-                        style={{
-                            textDecoration: "none",
-                            color: "#FFFFFF",
-                        }}
-                        to="/employer"
-                    >
-                        پنل
-                    </Link>
+                    <>
+                        <Link
+                            style={{
+                                textDecoration: "none",
+                                color: "#FFFFFF",
+                            }}
+                            to="/employer"
+                        >
+                            پنل
+                        </Link>
+                        <Link
+                            style={{
+                                textDecoration: "none",
+                                color: "#FFFFFF",
+                            }}
+                            to="/"
+                            onClick={() => {
+                                dispatch(EmployerLogoutReducer());
+                            }}
+                        >
+                            خروج
+                        </Link>
+                    </>
                 ) : currentUser ? (
-                    <Link
-                        style={{
-                            textDecoration: "none",
-                            color: "#FFFFFF",
-                        }}
-                        to="/user"
-                    >
-                        پنل
-                    </Link>
+                    <>
+                        <Link
+                            style={{
+                                textDecoration: "none",
+                                color: "#FFFFFF",
+                            }}
+                            to="/user"
+                        >
+                            پنل
+                        </Link>
+                        <Link
+                            style={{
+                                textDecoration: "none",
+                                color: "#FFFFFF",
+                            }}
+                            to="/"
+                            onClick={() => {
+                                dispatch(logoutReducer());
+                            }}
+                        >
+                            خروج
+                        </Link>
+                    </>
                 ) : (
                     <Box sx={{ display: "flex", gap: 2 }}>
                         <Box sx={{ display: "flex" }}>
