@@ -12,8 +12,24 @@ import ShareIcon from '@mui/icons-material/Share';
 import CardSingleAd from './CardSingleAd';
 import Card2SingleAd from './Card2SingleAd';
 import Card3SingleAd from './Card3SingleAd';
+import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
 function HeaderSingleAd() {
+  const params = useParams().id;
+
+  const companiesAds = useSelector((state: any) => state.adsSlice);
+
+  const company = useSelector((state: any) => state.employersSlice);
+
+  const companyAdsData = companiesAds.ads.find(
+    (item: any) => item.id === params
+  );
+
+  const companyData = company.employers.find(
+    (item: any) => item.id === companyAdsData.employerId
+  );
+
   return (
     <Container sx={{ p: '4rem' }}>
       <Box sx={{ display: 'flex', gap: '4rem' }}>
@@ -69,7 +85,7 @@ function HeaderSingleAd() {
                           color: '#9966C3',
                         }}
                       >
-                        شرکت کیکاووس زمان
+                        {companyData.company.name}
                       </Typography>
                       <Typography
                         sx={{
@@ -82,7 +98,7 @@ function HeaderSingleAd() {
                       </Typography>
                     </Box>
                     <Typography sx={{ fontFamily: 'shabnam', fontWeight: 500 }}>
-                      نیروی برنامه نویس php{' '}
+                      {companyAdsData.adsInfo}
                     </Typography>
                   </Box>
                 </Box>
@@ -105,7 +121,7 @@ function HeaderSingleAd() {
                     حقوق
                   </Typography>
                   <Typography sx={{ fontFamily: 'shabnam', fontWeight: 500 }}>
-                    8-10
+                    {companyAdsData.salary}
                   </Typography>
                 </Box>
                 <Divider orientation="vertical" flexItem />
@@ -114,7 +130,7 @@ function HeaderSingleAd() {
                     محل کار
                   </Typography>
                   <Typography sx={{ fontFamily: 'shabnam', fontWeight: 500 }}>
-                    تهران سهروردی شمالی
+                    {companyData.company.address}
                   </Typography>
                 </Box>
                 <Divider orientation="vertical" flexItem />
@@ -124,7 +140,15 @@ function HeaderSingleAd() {
                     نوع همکاری
                   </Typography>
                   <Typography sx={{ fontFamily: 'shabnam', fontWeight: 500 }}>
-                    تمام وقت
+                    {companyAdsData.fullTime
+                      ? 'تمام وقت'
+                      : companyAdsData.partTime
+                      ? 'نیمه وقت'
+                      : companyAdsData.remote
+                      ? 'دورکاری'
+                      : companyAdsData.trainee
+                      ? 'کارآموزی'
+                      : ''}
                   </Typography>
                 </Box>
               </Box>
@@ -132,8 +156,14 @@ function HeaderSingleAd() {
           </Box>
           {/* inja */}
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
-            <CardSingleAd />
-            <Card2SingleAd />
+            <CardSingleAd
+              companyMemebers={companyData.company.membersCount}
+              estYear={companyData.company.estYear}
+              activityTitle={companyData.company.activityTitle}
+              advantages={companyAdsData.advantages}
+              describtions={companyData.company.describtions}
+            />
+            <Card2SingleAd skills={companyAdsData.skills} />
             <Card3SingleAd />
           </Box>
         </Box>

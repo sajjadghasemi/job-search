@@ -9,7 +9,12 @@ import {
 import Select from '@mui/material/Select';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import image from '../../../assets/uiImages/JobAd.svg';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 const JobAds = () => {
+  const jobAds = useSelector((state: any) => state.adsSlice);
+
+
   return (
     <Container>
       <Box
@@ -134,153 +139,69 @@ const JobAds = () => {
           </Select>
         </Box>
         {/* jobs cart */}
-        <Box
-          sx={{
-            width: '265px',
-            boxShadow: '2px 3px #c0c0c0',
-            borderRadius: '10px',
-          }}
-        >
-          <Box sx={{ p: 3, paddingRight: 12 }}>
-            <Avatar
-              src={
-                'https://cms-wp.bigcommerce.com/wp-content/uploads/2015/03/buying-from-alibaba-798x457.jpg'
-              }
-              sx={{ width: '70px', height: '70px', objectFit: 'cover' }}
-            />
-          </Box>
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              textAlign: 'center',
-              gap: 2,
-            }}
-          >
-            <Typography sx={{ fontFamily: 'shabnam', fontWeight: 700 }}>
-              طراحui/ux
-            </Typography>
-            <Typography sx={{ fontFamily: 'shabnam', fontWeight: 500 }}>
-              تهران
-            </Typography>
-            <Typography sx={{ fontFamily: 'shabnam', fontWeight: 500 }}>
-              2روز پیش
-            </Typography>
-            <Box
-            // sx={{width:'48px'}}
-            >
-              <Button
-                variant="contained"
-                sx={{
-                  bgcolor: '#D271B7',
-                  ':hover': { bgcolor: '#664482' },
-                  fontFamily: 'shabnam',
-                }}
-              >
-                ارسال رزومه
-              </Button>
-            </Box>
-          </Box>
-        </Box>
 
-        <Box
-          sx={{
-            width: '265px',
-            boxShadow: '2px 3px #c0c0c0',
-            borderRadius: '10px',
-          }}
-        >
-          <Box sx={{ p: 3, paddingRight: 12 }}>
-            <Avatar
-              src={
-                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzov_BNg52rm6Mz-hlxf5_ZfgchPM20k4JOg&usqp=CAU'
-              }
-              sx={{ width: '70px', height: '70px' }}
-            />
-          </Box>
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              textAlign: 'center',
-              gap: 2,
-            }}
-          >
-            <Typography sx={{ fontFamily: 'shabnam', fontWeight: 700 }}>
-              طراحui/ux
-            </Typography>
-            <Typography sx={{ fontFamily: 'shabnam', fontWeight: 500 }}>
-              تهران
-            </Typography>
-            <Typography sx={{ fontFamily: 'shabnam', fontWeight: 500 }}>
-              2روز پیش
-            </Typography>
-            <Box
-            // sx={{width:'48px'}}
-            >
-              <Button
-                variant="contained"
-                sx={{
-                  bgcolor: '#D271B7',
-                  ':hover': { bgcolor: '#664482' },
-                  fontFamily: 'shabnam',
-                }}
+        {jobAds ? (
+          jobAds.ads.map((item: any, i: number) => {
+            return (
+              <Link
+                style={{ textDecoration: 'none', color: 'black' }}
+                to={`/JobAds/${item.id}`}
               >
-                ارسال رزومه
-              </Button>
-            </Box>
-          </Box>
-        </Box>
-
-        <Box
-          sx={{
-            width: '265px',
-            boxShadow: '2px 3px #c0c0c0',
-            borderRadius: '10px',
-          }}
-        >
-          <Box sx={{ p: 3, paddingRight: 12 }}>
-            <Avatar
-              src={
-                'https://cdn-1.webcatalog.io/catalog/snapp/snapp-icon-filled.png'
-              }
-              sx={{ width: '70px', height: '70px' }}
-            />
-          </Box>
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              textAlign: 'center',
-              gap: 2,
-            }}
-          >
-            <Typography sx={{ fontFamily: 'shabnam', fontWeight: 700 }}>
-              طراحui/ux
-            </Typography>
-            <Typography sx={{ fontFamily: 'shabnam', fontWeight: 500 }}>
-              تهران
-            </Typography>
-            <Typography sx={{ fontFamily: 'shabnam', fontWeight: 500 }}>
-              2روز پیش
-            </Typography>
-            <Box
-            // sx={{width:'48px'}}
-            >
-              <Button
-                variant="contained"
-                sx={{
-                  bgcolor: '#D271B7',
-                  ':hover': { bgcolor: '#664482' },
-                  fontFamily: 'shabnam',
-                }}
-              >
-                ارسال رزومه
-              </Button>
-            </Box>
-          </Box>
-        </Box>
+                <Box
+                  sx={{
+                    width: '265px',
+                    boxShadow: '2px 3px #c0c0c0',
+                    borderRadius: '10px',
+                    paddingBottom: '15px',
+                  }}
+                >
+                  <Box sx={{ p: 3, paddingRight: 12 }}>
+                    <Avatar
+                      sx={{ width: '70px', height: '70px', objectFit: 'cover' }}
+                    />
+                  </Box>
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      textAlign: 'center',
+                      gap: 2,
+                    }}
+                  >
+                    <Typography sx={{ fontFamily: 'shabnam', fontWeight: 700 }}>
+                      {item.adsInfo}
+                    </Typography>
+                    <Typography sx={{ fontFamily: 'shabnam', fontWeight: 500 }}>
+                      {item.salary}
+                    </Typography>
+                    <Typography sx={{ fontFamily: 'shabnam', fontWeight: 500 }}>
+                      2روز پیش
+                    </Typography>
+                    <Box>
+                      <Button
+                        variant="contained"
+                        sx={{
+                          bgcolor: '#D271B7',
+                          ':hover': { bgcolor: '#664482' },
+                          fontFamily: 'shabnam',
+                        }}
+                      >
+                        ارسال رزومه
+                      </Button>
+                    </Box>
+                  </Box>
+                </Box>
+              </Link>
+            );
+          })
+        ) : (
+          <Typography sx={{ fontFamily: 'shabanme' }} variant="h6">
+            چیزی ثبت نشده
+          </Typography>
+        )}
+        {/* jobs cart */}
       </Box>
+
       {/* CARTS */}
       <Box sx={{ paddingTop: 5, paddingRight: 23 }}>
         <Typography
@@ -336,9 +257,7 @@ const JobAds = () => {
               </span>{' '}
               بساز .
             </Typography>
-            <Box
-            // sx={{width:'48px'}}
-            >
+            <Box>
               <Button
                 variant="contained"
                 sx={{
@@ -353,153 +272,69 @@ const JobAds = () => {
             </Box>
           </Box>
         </Box>
-        <Box
-          sx={{
-            width: '265px',
-            boxShadow: '2px 3px #c0c0c0',
-            borderRadius: '10px',
-          }}
-        >
-          <Box sx={{ p: 3, paddingRight: 12 }}>
-            <Avatar
-              src={
-                'https://cdn-1.webcatalog.io/catalog/snapp/snapp-icon-filled.png'
-              }
-              sx={{ width: '70px', height: '70px' }}
-            />
-          </Box>
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              textAlign: 'center',
-              gap: 2,
-              marginBottom: 9,
-            }}
-          >
-            <Typography sx={{ fontFamily: 'shabnam', fontWeight: 700 }}>
-              طراحui/ux
-            </Typography>
-            <Typography sx={{ fontFamily: 'shabnam', fontWeight: 500 }}>
-              تهران
-            </Typography>
-            <Typography sx={{ fontFamily: 'shabnam', fontWeight: 500 }}>
-              2روز پیش
-            </Typography>
-            <Box
-            // sx={{width:'48px'}}
-            >
-              <Button
-                variant="contained"
-                sx={{
-                  bgcolor: '#D271B7',
-                  ':hover': { bgcolor: '#664482' },
-                  fontFamily: 'shabnam',
-                }}
+        {/* second cart */}
+
+        {jobAds ? (
+          jobAds.ads.map((item: any, i: number) => {
+            return (
+              <Link
+                style={{ textDecoration: 'none', color: 'black' }}
+                to={`/JobAds/${item.id}`}
               >
-                ارسال رزومه
-              </Button>
-            </Box>
-          </Box>
-        </Box>
-        {/*  */}
-        <Box
-          sx={{
-            width: '265px',
-            boxShadow: '2px 3px #c0c0c0',
-            borderRadius: '10px',
-          }}
-        >
-          <Box sx={{ p: 3, paddingRight: 12 }}>
-            <Avatar
-              src={
-                'https://cdn-1.webcatalog.io/catalog/snapp/snapp-icon-filled.png'
-              }
-              sx={{ width: '70px', height: '70px' }}
-            />
-          </Box>
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              textAlign: 'center',
-              gap: 2,
-            }}
-          >
-            <Typography sx={{ fontFamily: 'shabnam', fontWeight: 700 }}>
-              طراحui/ux
-            </Typography>
-            <Typography sx={{ fontFamily: 'shabnam', fontWeight: 500 }}>
-              تهران
-            </Typography>
-            <Typography sx={{ fontFamily: 'shabnam', fontWeight: 500 }}>
-              2روز پیش
-            </Typography>
-            <Box
-            // sx={{width:'48px'}}
-            >
-              <Button
-                variant="contained"
-                sx={{
-                  bgcolor: '#D271B7',
-                  ':hover': { bgcolor: '#664482' },
-                  fontFamily: 'shabnam',
-                }}
-              >
-                ارسال رزومه
-              </Button>
-            </Box>
-          </Box>
-        </Box>
-        {/*  */}
-        <Box
-          sx={{
-            width: '265px',
-            boxShadow: '2px 3px #c0c0c0',
-            borderRadius: '10px',
-          }}
-        >
-          <Box sx={{ p: 3, paddingRight: 12 }}>
-            <Avatar
-              src={
-                'https://cdn-1.webcatalog.io/catalog/snapp/snapp-icon-filled.png'
-              }
-              sx={{ width: '70px', height: '70px' }}
-            />
-          </Box>
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              textAlign: 'center',
-              gap: 2,
-            }}
-          >
-            <Typography sx={{ fontFamily: 'shabnam', fontWeight: 700 }}>
-              طراحui/ux
-            </Typography>
-            <Typography sx={{ fontFamily: 'shabnam', fontWeight: 500 }}>
-              تهران
-            </Typography>
-            <Typography sx={{ fontFamily: 'shabnam', fontWeight: 500 }}>
-              2روز پیش
-            </Typography>
-            <Box
-            // sx={{width:'48px'}}
-            >
-              <Button
-                variant="contained"
-                sx={{
-                  bgcolor: '#D271B7',
-                  ':hover': { bgcolor: '#664482' },
-                  fontFamily: 'shabnam',
-                }}
-              >
-                ارسال رزومه
-              </Button>
-            </Box>
-          </Box>
-        </Box>
+                <Box
+                  sx={{
+                    width: '265px',
+                    boxShadow: '2px 3px #c0c0c0',
+                    borderRadius: '10px',
+                    paddingBottom: '15px',
+                  }}
+                >
+                  <Box sx={{ p: 3, paddingRight: 12 }}>
+                    <Avatar
+                      sx={{ width: '70px', height: '70px', objectFit: 'cover' }}
+                    />
+                  </Box>
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      textAlign: 'center',
+                      gap: 2,
+                    }}
+                  >
+                    <Typography sx={{ fontFamily: 'shabnam', fontWeight: 700 }}>
+                      {item.adsInfo}
+                    </Typography>
+                    <Typography sx={{ fontFamily: 'shabnam', fontWeight: 500 }}>
+                      {item.salary}
+                    </Typography>
+                    <Typography sx={{ fontFamily: 'shabnam', fontWeight: 500 }}>
+                      2روز پیش
+                    </Typography>
+                    <Box>
+                      <Button
+                        variant="contained"
+                        sx={{
+                          bgcolor: '#D271B7',
+                          ':hover': { bgcolor: '#664482' },
+                          fontFamily: 'shabnam',
+                        }}
+                      >
+                        ارسال رزومه
+                      </Button>
+                    </Box>
+                  </Box>
+                </Box>
+              </Link>
+            );
+          })
+        ) : (
+          <Typography sx={{ fontFamily: 'shabanme' }} variant="h6">
+            چیزی ثبت نشده
+          </Typography>
+        )}
+
+        {/* second cart  */}
       </Box>
       {/*  */}
       <Box sx={{ paddingTop: 5, paddingRight: 23 }}>
@@ -509,6 +344,7 @@ const JobAds = () => {
           اگهی های طراحی ui
         </Typography>
       </Box>
+      {/* third cart */}
       <Box
         sx={{
           p: 3,
@@ -572,153 +408,66 @@ const JobAds = () => {
             </Box>
           </Box>
         </Box>
-        <Box
-          sx={{
-            width: '265px',
-            boxShadow: '2px 3px #c0c0c0',
-            borderRadius: '10px',
-          }}
-        >
-          <Box sx={{ p: 3, paddingRight: 12 }}>
-            <Avatar
-              src={
-                'https://cdn-1.webcatalog.io/catalog/snapp/snapp-icon-filled.png'
-              }
-              sx={{ width: '70px', height: '70px' }}
-            />
-          </Box>
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              textAlign: 'center',
-              gap: 2,
-              marginBottom: 9,
-            }}
-          >
-            <Typography sx={{ fontFamily: 'shabnam', fontWeight: 700 }}>
-              طراحui/ux
-            </Typography>
-            <Typography sx={{ fontFamily: 'shabnam', fontWeight: 500 }}>
-              تهران
-            </Typography>
-            <Typography sx={{ fontFamily: 'shabnam', fontWeight: 500 }}>
-              2روز پیش
-            </Typography>
-            <Box
-            // sx={{width:'48px'}}
-            >
-              <Button
-                variant="contained"
-                sx={{
-                  bgcolor: '#D271B7',
-                  ':hover': { bgcolor: '#664482' },
-                  fontFamily: 'shabnam',
-                }}
+
+        {jobAds ? (
+          jobAds.ads.map((item: any, i: number) => {
+            return (
+              <Link
+                style={{ textDecoration: 'none', color: 'black' }}
+                to={`/JobAds/${item.id}`}
               >
-                ارسال رزومه
-              </Button>
-            </Box>
-          </Box>
-        </Box>
-        {/*  */}
-        <Box
-          sx={{
-            width: '265px',
-            boxShadow: '2px 3px #c0c0c0',
-            borderRadius: '10px',
-          }}
-        >
-          <Box sx={{ p: 3, paddingRight: 12 }}>
-            <Avatar
-              src={
-                'https://cdn-1.webcatalog.io/catalog/snapp/snapp-icon-filled.png'
-              }
-              sx={{ width: '70px', height: '70px' }}
-            />
-          </Box>
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              textAlign: 'center',
-              gap: 2,
-            }}
-          >
-            <Typography sx={{ fontFamily: 'shabnam', fontWeight: 700 }}>
-              طراحui/ux
-            </Typography>
-            <Typography sx={{ fontFamily: 'shabnam', fontWeight: 500 }}>
-              تهران
-            </Typography>
-            <Typography sx={{ fontFamily: 'shabnam', fontWeight: 500 }}>
-              2روز پیش
-            </Typography>
-            <Box
-            // sx={{width:'48px'}}
-            >
-              <Button
-                variant="contained"
-                sx={{
-                  bgcolor: '#D271B7',
-                  ':hover': { bgcolor: '#664482' },
-                  fontFamily: 'shabnam',
-                }}
-              >
-                ارسال رزومه
-              </Button>
-            </Box>
-          </Box>
-        </Box>
-        {/*  */}
-        <Box
-          sx={{
-            width: '265px',
-            boxShadow: '2px 3px #c0c0c0',
-            borderRadius: '10px',
-          }}
-        >
-          <Box sx={{ p: 3, paddingRight: 12 }}>
-            <Avatar
-              src={
-                'https://cdn-1.webcatalog.io/catalog/snapp/snapp-icon-filled.png'
-              }
-              sx={{ width: '70px', height: '70px' }}
-            />
-          </Box>
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              textAlign: 'center',
-              gap: 2,
-            }}
-          >
-            <Typography sx={{ fontFamily: 'shabnam', fontWeight: 700 }}>
-              طراحui/ux
-            </Typography>
-            <Typography sx={{ fontFamily: 'shabnam', fontWeight: 500 }}>
-              تهران
-            </Typography>
-            <Typography sx={{ fontFamily: 'shabnam', fontWeight: 500 }}>
-              2روز پیش
-            </Typography>
-            <Box
-            // sx={{width:'48px'}}
-            >
-              <Button
-                variant="contained"
-                sx={{
-                  bgcolor: '#D271B7',
-                  ':hover': { bgcolor: '#664482' },
-                  fontFamily: 'shabnam',
-                }}
-              >
-                ارسال رزومه
-              </Button>
-            </Box>
-          </Box>
-        </Box>
+                <Box
+                  sx={{
+                    width: '265px',
+                    boxShadow: '2px 3px #c0c0c0',
+                    borderRadius: '10px',
+                    paddingBottom: '15px',
+                  }}
+                >
+                  <Box sx={{ p: 3, paddingRight: 12 }}>
+                    <Avatar
+                      sx={{ width: '70px', height: '70px', objectFit: 'cover' }}
+                    />
+                  </Box>
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      textAlign: 'center',
+                      gap: 2,
+                    }}
+                  >
+                    <Typography sx={{ fontFamily: 'shabnam', fontWeight: 700 }}>
+                      {item.adsInfo}
+                    </Typography>
+                    <Typography sx={{ fontFamily: 'shabnam', fontWeight: 500 }}>
+                      {item.salary}
+                    </Typography>
+                    <Typography sx={{ fontFamily: 'shabnam', fontWeight: 500 }}>
+                      2روز پیش
+                    </Typography>
+                    <Box>
+                      <Button
+                        variant="contained"
+                        sx={{
+                          bgcolor: '#D271B7',
+                          ':hover': { bgcolor: '#664482' },
+                          fontFamily: 'shabnam',
+                        }}
+                      >
+                        ارسال رزومه
+                      </Button>
+                    </Box>
+                  </Box>
+                </Box>
+              </Link>
+            );
+          })
+        ) : (
+          <Typography sx={{ fontFamily: 'shabanme' }} variant="h6">
+            چیزی ثبت نشده
+          </Typography>
+        )}
       </Box>
       {/*  */}
       <Box
