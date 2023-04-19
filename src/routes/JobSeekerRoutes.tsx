@@ -7,17 +7,18 @@ import Cv from "../components/job-seeker-dashbord/pages/Cv";
 import Suggestions from "../components/job-seeker-dashbord/pages/Suggestions";
 import AddCv from "../components/job-seeker-dashbord/pages/AddCv";
 import { useSelector } from "react-redux";
+import { RootState } from "../store/store";
 
 const JobSeekerRoutes = () => {
-    const auth = useSelector((state: any) => state.usersSlice.currentUser);
-
-    if (!auth)
-        return (
-            <>
-                <h1>404</h1>
-                <Link to="/">Go home</Link>
-            </>
-        );
+    const auth = useSelector((state: RootState) => state.usersSlice.currentUser);
+//BUG
+    // if (!auth)
+    //     return (
+    //         <>
+    //             <h1>404</h1>
+    //             <Link to="/">Go home</Link>
+    //         </>
+    //     );
 
     return (
         <Routes>
@@ -28,7 +29,7 @@ const JobSeekerRoutes = () => {
                 <Route path="cv" element={<Cv />} />
                 <Route path="add-cv" element={<AddCv />} />
                 <Route path="suggestions" element={<Suggestions />} />
-                <Route
+                {/* <Route
                     path="*"
                     element={
                         <>
@@ -36,7 +37,7 @@ const JobSeekerRoutes = () => {
                             <Link to="/">Go home</Link>
                         </>
                     }
-                />
+                /> */}
             </Route>
         </Routes>
     );

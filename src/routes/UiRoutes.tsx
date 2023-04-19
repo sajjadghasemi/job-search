@@ -23,7 +23,7 @@ const UiRoutes = () => {
                 <Route path="employer-sign" element={<EmployerSign />} />
                 <Route path="articles" element={<ArticlesPage />} />
                 <Route path="articles/:id" element={<SingleArticle />} />
-                <Route
+                {/* <Route
                     path="*"
                     element={
                         <>
@@ -31,7 +31,7 @@ const UiRoutes = () => {
                             <Link to="/">Go home</Link>
                         </>
                     }
-                />
+                /> */}
             </Route>
         </Routes>
     );
